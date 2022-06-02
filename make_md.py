@@ -9,7 +9,7 @@ myfile_out = open("README.md","w")
 
 myfile_out.write("#  **A Living Review of Quantum Information Science in Particle Physics**\n\n")
 
-myfile_out.write("*Inspired by \"A Living Review of Machine Learning for Particle Physics\", the goal of this document is to provide a nearly comprehensive list of citations for those developing and applying quantum information approaches to experimental, phenomenological, or theoretical analyses.  This repository will be updated as often as possible.  Suggestions are most welcome.*\n\n")
+myfile_out.write("*Inspired by \"A Living Review of Machine Learning for Particle Physics\", the goal of this repository is to provide an extensive list of citations for those developing and applying quantum information approaches to experimental, phenomenological, or theoretical analyses.  This repository will be updated as often as possible.  Suggestions are most welcome.*\n\n")
 
 # myfile_out.write("[![download](https://img.shields.io/badge/download-review-blue.svg)](https://iml-wg.github.io/HEPML-LivingReview/review/hepml-review.pdf)\n\n")
 
