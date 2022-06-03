@@ -1,7 +1,10 @@
 FILENAME = HEPQIS
+FILENAME_BRIEF = HEPQIS_BRIEF
+FILENAME_DETAIL = HEPQIS_DETAIL
 
 date = $(shell date +%Y-%m-%d)
-output_file = draft_$(date).pdf
+output_brief_file = draft_brief_$(date).pdf
+output_detail_file = draft_detail_$(date).pdf
 
 LATEX = lualatex
 BIBTEX = bibtex
@@ -10,11 +13,25 @@ all: default
 
 default: document copy_draft
 
-document:
-	latexmk -$(LATEX) -logfilewarnings -halt-on-error $(FILENAME)
+document: brief detail
+	
+brief:
+	cp HEPQIS.tex BRIEF.tex
+	sed -i 's/INPUTFILE/BRIEF/g' BRIEF.tex
+	latexmk -$(LATEX) -logfilewarnings -halt-on-error BRIEF
+	cp BRIEF.pdf $(FILENAME_BRIEF).pdf
+	rm -f BRIEF*
+
+detail:
+	cp HEPQIS.tex DETAIL.tex
+	sed -i 's/INPUTFILE/DETAIL/g' DETAIL.tex
+	latexmk -$(LATEX) -logfilewarnings -halt-on-error DETAIL
+	cp DETAIL.pdf $(FILENAME_DETAIL).pdf
+	rm -f DETAIL*
 
 copy_draft:
-	rsync $(FILENAME).pdf $(output_file)
+	rsync $(FILENAME_BRIEF).pdf $(output_brief_file)
+	rsync $(FILENAME_DETAIL).pdf $(output_detail_file)
 
 clean:
 	rm -f *.aux *.bak *.bbl *.blg *.dvi *.idx *.lof *.log *.lot *.toc \
