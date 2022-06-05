@@ -17,7 +17,9 @@ The goal of this repository is to collect references for quantum information sci
 <summary> <a href="https://arxiv.org/abs/2010.07335"> Quantum Machine Learning for Particle Physics using a Variational Quantum Classifier</a> [<a href="https://doi.org/10.1007/JHEP02(2021)212">DOI</a>]</summary>Test Description 3
 </details>
 
+
 ###  **Specialized Reviews 2**
+
 
 
 ##  **Quantum Machine Learning**
@@ -31,5 +33,6 @@ The goal of this repository is to collect references for quantum information sci
 
 
 ###  **QML Subcategory**
+
 
 

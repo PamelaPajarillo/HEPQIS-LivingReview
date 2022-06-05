@@ -1,6 +1,9 @@
 # Testing Files
 *.ipynb
+*.pyc
 __pycache__
+.vscode
+.vscode/*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
