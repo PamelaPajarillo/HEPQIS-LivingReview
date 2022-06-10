@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import bibtexparser
 
@@ -32,7 +33,7 @@ def get_dataframe(bib_file, csv_file):
     df["doi_url"] = df.apply(lambda x: fetch_doi_url(x.doi, x.doi_check), axis = 1)
 
     # Compress dataframe with useful information
-    df = df[["ID", "title", "Categories", "Description", "eprint_url", "doi_url"]]
+    df = df[["ID", "title", "Categories", "Description", "eprint_url", "doi_url", "HEP Context", "Methods" , "Results and Conclusions"]]
 
     return df
 
