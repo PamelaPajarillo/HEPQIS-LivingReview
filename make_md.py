@@ -46,8 +46,8 @@ for entry in categories:
         elif paper[5] is not None:
             OUTPUT_FILE.write("<summary> <a href=\"%s\"> %s</a></summary>" % (paper[5], paper[1]))
 
-        OUTPUT_FILE.write("%s\n" % paper[3].strip('\"'))
-        OUTPUT_FILE.write("</details>\n")
+        OUTPUT_FILE.write("\n\n%s\n\n" % paper[3].strip('\"'))
+        OUTPUT_FILE.write("</details>\n\n")
     
     OUTPUT_FILE.write("\n\n")
     for subentry in subcategories:
@@ -66,6 +66,6 @@ for entry in categories:
             elif paper[5] is not None:
                 OUTPUT_FILE.write("<summary> <a href=\"%s\"> %s</a></summary>" % (paper[5], paper[1]))
 
-            OUTPUT_FILE.write("%s\n" % paper[3].strip('\"'))
-            OUTPUT_FILE.write("</details>\n")
+            OUTPUT_FILE.write("\n\n%s\n\n" % paper[3].strip('\"'))
+            OUTPUT_FILE.write("</details>\n\n")
         OUTPUT_FILE.write("\n\n")

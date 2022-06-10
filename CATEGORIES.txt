@@ -1,2 +1,2 @@
-'Reviews', 'Specialized Reviews', 'Specialized Reviews 2'
-'Quantum Machine Learning', 'QML Subcategory'
+'Reviews'
+'Quantum Machine Learning', 'Quantum Annealing', 'Quantum Circuits'
