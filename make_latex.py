@@ -14,7 +14,12 @@ df = get_dataframe(BIB_FILE, CSV_FILE)
 
 # Parse CATEGORIES.txt
 categories = get_categories(TXT_FILE)
-            
+
+# Make dataframe for descriptions of categories
+# Read CSV and convert to dataframe
+csv_entries = pd.read_csv('CATEGORIES.csv')
+df_csv = pd.DataFrame(csv_entries)
+      
 # Get Categories and Subcategories
 for entry in categories:
     # Parse main category and subcategory
@@ -25,6 +30,10 @@ for entry in categories:
     OUTPUT_FILE_BRIEF.write("\section{%s}\n\n" % maincategory.strip('\''))
     OUTPUT_FILE_DETAIL.write("\section{%s}\n\n" % maincategory.strip('\''))
 
+    # Print Description of Main Category
+    if str(maincategory) in set(df_csv['Category']):
+        OUTPUT_FILE_DETAIL.write("\\textit{%s}\n\n" % df_csv.loc[df_csv['Category'] == maincategory]['Description'].values[0])
+    
     # Retrieve papers by checking for substring in categories
     df_cat = df.loc[df['Categories'].str.contains(maincategory, case=False)]
     cat_papers = df_cat.values.tolist()
@@ -45,6 +54,10 @@ for entry in categories:
     for subentry in subcategories:
         OUTPUT_FILE_BRIEF.write("\subsection{%s}\n\n" % subentry.strip('\''))
         OUTPUT_FILE_DETAIL.write("\subsection{%s}\n\n" % subentry.strip('\''))
+
+        # Print Description of Main Category
+        if str(subentry) in set(df_csv['Category']):
+            OUTPUT_FILE_DETAIL.write("\\textit{%s}\n\n" % df_csv.loc[df_csv['Category'] == subentry]['Description'].values[0])
 
         # Retrieve papers by checking for substring in categories
         df_subcat = df.loc[df['Categories'].str.contains(subentry, case=False)]

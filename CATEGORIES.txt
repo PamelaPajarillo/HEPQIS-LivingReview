@@ -1,2 +1,3 @@
 'Reviews'
+'Whitepapers'
 'Quantum Machine Learning', 'Quantum Annealing', 'Quantum Circuits'

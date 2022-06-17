@@ -22,7 +22,7 @@ df = get_dataframe(BIB_FILE, CSV_FILE)
 
 # Parse CATEGORIES.txt
 categories = get_categories(TXT_FILE)
-            
+          
 # Get Categories and Subcategories
 for entry in categories:
     # Parse main category and subcategory
