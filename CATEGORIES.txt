@@ -1,3 +1,5 @@
 'Reviews'
 'Whitepapers'
-'Quantum Machine Learning', 'Quantum Annealing', 'Quantum Circuits'
+'Quantum Machine Learning Based on Quantum Annealing'
+'Quantum Machine Learning Based on Gate-Based Quantum Computers'
+'Quantum Simulation'
