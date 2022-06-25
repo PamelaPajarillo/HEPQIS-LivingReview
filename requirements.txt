@@ -1,6 +1,1 @@
 requests~=2.27
-
-###### Requirements without Version Specifiers ######
-latexmk
-texlive-latex-extra
-pandas
