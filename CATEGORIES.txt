@@ -4,3 +4,4 @@
 'Quantum Machine Learning Based on Gate-Based Quantum Computers'
 'Quantum Machine Learning Based on Quantum Annealing'
 'Quantum Simulation'
+'Quantum-Inspired Algorithms'

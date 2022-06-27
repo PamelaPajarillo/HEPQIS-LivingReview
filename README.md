@@ -1,7 +1,7 @@
 #  **A Living Review of Quantum Information Science in Particle Physics**
 
 
-🟥🟥🟥 Warning! LaTeX formatting in GitHub (used in the descriptions of each paper) is not functioning properly. Please refer to the PDF version found <a href="https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS_DETAIL.pdf"> here </a> 🟥🟥🟥
+🟥🟥🟥 **Warning! LaTeX formatting in GitHub (used in the descriptions of each paper) is not functioning properly. Please refer to the <a href="https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS_DETAIL.pdf"> PDF version found here </a> **🟥🟥🟥
 
 *Inspired by "A Living Review of Machine Learning for Particle Physics", the goal of this repository is to provide an extensive list of citations for those developing and applying quantum information approaches to experimental, phenomenological, or theoretical analyses.  Applications of quantum information science to high energy physics is a relatively new field of research.  This repository will be updated as often as possible with the relevant literature.  Suggestions are most welcome.*
 
@@ -59,6 +59,20 @@ TBD
 
 </details>
 
+<details>
+<summary> <a href="https://arxiv.org/abs/2111.07806"> Leveraging Quantum Annealer to identify an Event-topology at High Energy Colliders</a></summary>
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/1908.04475"> Charged particle tracking with quantum annealing-inspired optimization</a> [<a href="https://doi.org/10.1007/s42484-021-00054-w">DOI</a>]</summary>
+
+TBD
+
+</details>
+
 
 
 ##  **Quantum Machine Learning Based on Gate-Based Quantum Computers**
@@ -105,6 +119,34 @@ TBD
 
 </details>
 
+<details>
+<summary> <a href="https://arxiv.org/abs/2202.10471"> Classical versus Quantum: comparing Tensor Network-based Quantum Circuits on LHC data</a></summary>
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2112.04958"> Anomaly detection in high-energy physics using a quantum autoencoder</a> [<a href="https://doi.org/10.1103/PhysRevD.105.095004">DOI</a>]</summary>
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://doi.org/10.1038/s41598-021-01552-4"> Implementation and analysis of quantum computing application to Higgs boson reconstruction at the large Hadron Collider</a></summary>
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2110.06933"> Style-based quantum generative adversarial networks for Monte Carlo events</a></summary>
+
+TBD
+
+</details>
+
 
 
 ##  **Quantum Machine Learning Based on Quantum Annealing**
@@ -130,9 +172,27 @@ TBD
 
 </details>
 
+<details>
+<summary> <a href="https://arxiv.org/abs/2106.00051"> Quantum algorithm for the classification of supersymmetric top quark events</a> [<a href="https://doi.org/10.1103/PhysRevD.104.096004">DOI</a>]</summary>
+
+TBD
+
+</details>
+
 
 
 ##  **Quantum Simulation**
+
+
+
+##  **Quantum-Inspired Algorithms**
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2106.08334"> Quantum-inspired event reconstruction with Tensor Networks: Matrix Product States</a> [<a href="https://doi.org/10.1007/JHEP08(2021)112">DOI</a>]</summary>
+
+TBD
+
+</details>
 
 
 

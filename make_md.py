@@ -7,7 +7,8 @@ OUTPUT_FILE = open("README.md","w")
 OUTPUT_FILE.write("#  **A Living Review of Quantum Information Science in Particle Physics**\n\n")
 
 # WARNING
-OUTPUT_FILE.write('\n🟥🟥🟥 Warning! LaTeX formatting in GitHub (used in the descriptions of each paper) is not functioning properly. Please refer to the PDF version found <a href=\"https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS_DETAIL.pdf\"> here </a> 🟥🟥🟥\n\n')
+OUTPUT_FILE.write('\n🟥🟥🟥 **Warning! LaTeX formatting in GitHub (used in the descriptions of each paper) is not functioning properly. Please refer to the <a href=\"https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS_DETAIL.pdf\"> PDF version found here </a> **🟥🟥🟥\n\n')
+
 # Abstract
 OUTPUT_FILE.write("*Inspired by \"A Living Review of Machine Learning for Particle Physics\", the goal of this repository is to provide an extensive list of citations for those developing and applying quantum information approaches to experimental, phenomenological, or theoretical analyses.  Applications of quantum information science to high energy physics is a relatively new field of research.  This repository will be updated as often as possible with the relevant literature.  Suggestions are most welcome.*\n\n")
 

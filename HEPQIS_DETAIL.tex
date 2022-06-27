@@ -20,9 +20,15 @@ TBD
 
 \section{Quantum Optimization Based on Quantum Annealing}
 
+\textit{Quantum annealing is a quantum computing method used to solve optimization problems. It is currently the only quantum computing paradigm that enables architectures with large number of qubits, such as D-Wave Systems' Pegasus quantum processor chip with 5000 qubits. The classical counterpart, simulated annealing, mimics the process of heating up a material above its recrystallization temperature then cooled down slowly in order to change the material to a desirable structure. Simulated annealing is capable of finding global extrema as it is able to escape local extrema. The simulated annealing algorithm is as follows: (1) Start with an initial solution $s = s_0$ and an initial temperature $t = t_0$, Let $E(s)$ be the loss function of $s$; (2) Define a temperature reduction scheme. Some examples of temperature reduction schemes are: $t = t - \alpha$, $t = t\alpha$, and $t = \frac{t}{1+\alpha t}$; (3) Starting at $t = t_0$, consider some neighborhood of solution $N(s)$, and pick one of the solutions $s'$; (4) Calculate the difference of the loss function $\delta E$ between the solutions $s$ and $s'$. If $\delta E \geq 0$, accept the new solution. If $\delta < 0$, generate a uniform random number $r$ between 0 and 1. Accept the solution if $r < e^{\frac{\delta E}{t}}$. Note that for large $t$, the probability of selecting $s'$ is high; (5) Repeat steps (3) and (4) for $n$ iterations, updating $t$ given by the temperature reduction rule. \\\\ Quantum annealers solve very specific optimization problems called Quadratic Unconstrained Binary Optimization (QUBO) problems. The QUBO problem consists of finding a binary string that is minimal with respect to a quadratic polynomial over binary variables. The main challenge is to rephrase the loss function to a QUBO problem, which is equivalent to finding the ground state of a corresponding Ising model, whose Hamiltonian is given by $$H(\sigma) = \sum_{i,j=1}^{n}J_{ij} s_i s_j + \sum_{i=1}^{n} h_i s_i$$where $s_i \in \{-1, +1\}$ are the spin values, and $h_i$ and $J_{ij}$ are adjustable constants that represents biases and coupling strengths, respectively. The Hamiltonian of the quantum version of the Ising model, the transverse field Ising model, is given by $$ H_f = \sum_{i,j = 1}^{n}J_{ij}\sigma_{i}^{z}\sigma_{j}^{z} + \sum_{i}^{n}h_i\sigma_{i}^{z} $$where $\sigma_{i}^{z}$ is the Pauli-$Z$ acting on qubit $i$. In quantum annealing, one initializes the system in the ground state of the initial Hamiltonian $H_i$, given by $$ H_i = \sum_{i=1}^{n}\sigma_{i}^{x} $$corresponding to the state $(| 0 \rangle + | 1 \rangle)^{\otimes n}$. The quantum adiabatic theorem states that if the transition between two Hamiltonians is gradual, the system will stay in the ground state. After initializing the system, it slowly evolves by changing the Hamiltonian given by $$ H(t) = \left(1 - \frac{t}{T}\right)H_i + \frac{t}{T} H_f $$where $T$ is the total time in the annealing process. Measuring the final state after the anneal will give the solution to the QUBO problem, since the final system is in an eigenstate of $H_f$. This section reviews papers that involve quantum annealing approaches in particle physics.}
+
 \subsubsection{Degeneracy Engineering for Classical and Quantum Annealing: A Case Study of Sparse Linear Regression in Collider Physics~\cite{Anschuetz:2022rwu}}
 TBD
 \subsubsection{Quantum Annealing for Jet Clustering with Thrust~\cite{Delgado:2022snu}}
+TBD
+\subsubsection{Leveraging Quantum Annealer to identify an Event-topology at High Energy Colliders~\cite{Kim:2021wrr}}
+TBD
+\subsubsection{Charged particle tracking with quantum annealing-inspired optimization~\cite{Zlokapa:2019tkn}}
 TBD
 
 
@@ -42,11 +48,19 @@ In this paper, two quantum machine learning (QML) algorithms based on gate-based
 TBD
 \subsubsection{Classical versus Quantum: comparing Tensor Network-based Quantum Circuits on LHC data~\cite{Araz:2022haf}}
 TBD
+\subsubsection{Classical versus Quantum: comparing Tensor Network-based Quantum Circuits on LHC data~\cite{Araz:2022haf}}
+TBD
+\subsubsection{Anomaly detection in high-energy physics using a quantum autoencoder~\cite{Ngairangbam:2021yma}}
+TBD
+\subsubsection{Implementation and analysis of quantum computing application to Higgs boson reconstruction at the large Hadron Collider~\cite{AlexiadesArmenakas:2021lrs}}
+TBD
+\subsubsection{Style-based quantum generative adversarial networks for Monte Carlo events~\cite{Bravo-Prieto:2021ehz}}
+TBD
 
 
 \section{Quantum Machine Learning Based on Quantum Annealing}
 
-\textit{Quantum annealing is a quantum computing method used to solve optimization problems. It is currently the only quantum computing paradigm that enables architectures with large number of qubits, such as D-Wave Systems' Pegasus quantum processor chip with 5000 qubits. The classical counterpart, simulated annealing, mimics the process of heating up a material above its recrystallization temperature then cooled down slowly in order to change the material to a desirable structure. Simulated annealing is capable of finding global extrema as it is able to escape local extrema. The simulated annealing algorithm is as follows: (1) Start with an initial solution $s = s_0$ and an initial temperature $t = t_0$, Let $E(s)$ be the loss function of $s$; (2) Define a temperature reduction scheme. Some examples of temperature reduction schemes are: $t = t - \alpha$, $t = t\alpha$, and $t = \frac{t}{1+\alpha t}$; (3) Starting at $t = t_0$, consider some neighborhood of solution $N(s)$, and pick one of the solutions $s'$; (4) Calculate the difference of the loss function $\delta E$ between the solutions $s$ and $s'$. If $\delta E \geq 0$, accept the new solution. If $\delta < 0$, generate a uniform random number $r$ between 0 and 1. Accept the solution if $r < e^{\frac{\delta E}{t}}$. Note that for large $t$, the probability of selecting $s'$ is high; (5) Repeat steps (3) and (4) for $n$ iterations, updating $t$ given by the temperature reduction rule. \\\\ Quantum annealers solve very specific optimization problems called Quadratic Unconstrained Binary Optimization (QUBO) problems. The QUBO problem consists of finding a binary string that is minimal with respect to a quadratic polynomial over binary variables. The main challenge is to rephrase the loss function to a QUBO problem, which is equivalent to finding the ground state of a corresponding Ising model, whose Hamiltonian is given by $$H(\sigma) = \sum_{i,j=1}^{n}J_{ij} s_i s_j + \sum_{i=1}^{n} h_i s_i$$where $s_i \in \{-1, +1\}$ are the spin values, and $h_i$ and $J_{ij}$ are adjustable constants that represents biases and coupling strengths, respectively. The Hamiltonian of the quantum version of the Ising model, the transverse field Ising model, is given by $$ H_f = \sum_{i,j = 1}^{n}J_{ij}\sigma_{i}^{z}\sigma_{j}^{z} + \sum_{i}^{n}h_i\sigma_{i}^{z} $$where $\sigma_{i}^{z}$ is the Pauli-$Z$ acting on qubit $i$. In quantum annealing, one initializes the system in the ground state of the initial Hamiltonian $H_i$, given by $$ H_i = \sum_{i=1}^{n}\sigma_{i}^{x} $$corresponding to the state $(| 0 \rangle + | 1 \rangle)^{\otimes n}$. The quantum adiabatic theorem states that if the transition between two Hamiltonians is gradual, the system will stay in the ground state. After initializing the system, it slowly evolves by changing the Hamiltonian given by $$ H(t) = \left(1 - \frac{t}{T}\right)H_i + \frac{t}{T} H_f $$where $T$ is the total time in the annealing process. Measuring the final state after the anneal will give the solution to the QUBO problem, since the final system is in an eigenstate of $H_f$. This section reviews papers that involve quantum annealing approaches in particle physics.}
+\textit{TBD}
 
 \subsubsection{Solving a Higgs optimization problem with quantum annealing for machine learning~\cite{Mott:2017xdb}}
 Using D-Wave's programmable quantum annealer, this paper explores quantum annealing for machine learning (QAML). The paper shows that quantum and classical annealing-based classifiers perform comparably with no clear advantage to traditional machine learning methods, including deep neural network (DNN) and an ensemble of boosted decision trees (BDTs), to solve a Higgs signal-background discrimination machine learning optimimzation problem, which identifies features from a pair of photons correspond to a decay from the Higgs or other Standard Model processes. The inputs of the weak binary classifiers are the encoded transverse momentum of photons and the correlations between the two photons. The strong classifier is then constructed from a linear combination of weak classifiers, where the weights are obtained through an optimization problem, which must have a mapping to a quadratic unconstrained binary optimization (QUBO) problem. This classifier is resistant to overfitting, since due to noise, the D-Wave quantum annealer will avoid the global minimum of the loss functional, and it has a slight advantage over BDT and DNN with a smaller training dataset.
@@ -54,11 +68,19 @@ Using D-Wave's programmable quantum annealer, this paper explores quantum anneal
 Inspired by quantum annealing for machine learning (QAML), which constructs a strong classifier from a linear combination of weak binary classifiers. this paper proposes a variant called QAML-Z, where the binary classifiers are modified to continuous real values by performing a search on the real numbers. This works by zooming into a region of the energy surface and iteratively perform quantum annealing to an augmented set of weak classifiers, which then makes a strong classifier. The iteration rule that gives the weight of each classifier consists of shifting the value of mean based on the spin of the qubit then narrowing the search breadth. The zooming algorithm increases the probability of overfitting, so the authors of the paper propose regularizing the iterative process by applying a bit flip between each iteration with monotonically decreasing probability. This effectively prevents the strong classifier from overfitting and overcomes getting out of a local minima. The QAML-Z algorithm is applied to the Higgs optimization problem, where features of a diphoton event must be identified in order to classify events as a Higgs decay or other Standard Model processes. QAML-Z does not show an obvious advantage over traditional machine learning methods, including deep neural networks (DNNs) and boosted decision trees (BDTs), however, its performance surpasses the QAML algorithm and simulated annealing with zooming.
 \subsubsection{Completely Quantum Neural Networks~\cite{Abel:2022lqr}}
 TBD
+\subsubsection{Quantum algorithm for the classification of supersymmetric top quark events~\cite{Bargassa:2021jmk}}
+TBD
 
 
 \section{Quantum Simulation}
 
 \textit{TBD}
 
+
+
+\section{Quantum-Inspired Algorithms}
+
+\subsubsection{Quantum-inspired event reconstruction with Tensor Networks: Matrix Product States~\cite{Araz:2021zwu}}
+TBD
 
 
