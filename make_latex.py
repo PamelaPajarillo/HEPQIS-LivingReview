@@ -1,6 +1,7 @@
 from utils import *
 
 # Output Markdown File
+OUTPUT_FILE_LIST = open("HEPQIS_LIST.tex","w")
 OUTPUT_FILE_BRIEF = open("HEPQIS_BRIEF.tex","w")
 OUTPUT_FILE_DETAIL = open("HEPQIS_DETAIL.tex","w")
 
@@ -27,6 +28,7 @@ for entry in categories:
     subcategories = entry.split(", ")[1:]
 
     # Print Title of Main Category
+    OUTPUT_FILE_LIST.write("\section{%s}\n\n" % maincategory.strip('\''))
     OUTPUT_FILE_BRIEF.write("\section{%s}\n\n" % maincategory.strip('\''))
     OUTPUT_FILE_DETAIL.write("\section{%s}\n\n" % maincategory.strip('\''))
 
@@ -40,18 +42,22 @@ for entry in categories:
 
     # Formatting and write to file
     if len(cat_papers) != 0:
-        OUTPUT_FILE_BRIEF.write("\\begin{itemize}\n")
+        OUTPUT_FILE_LIST.write("\\begin{itemize}\n")
     for paper in cat_papers:
-        OUTPUT_FILE_BRIEF.write("   \item %s~\cite{%s}\n" % (paper[1], paper[0]))
-        OUTPUT_FILE_DETAIL.write("\subsubsection{%s~\cite{%s}}\n" % (paper[1], paper[0]))
+        OUTPUT_FILE_LIST.write("   \item %s~\cite{%s}\n" % (paper[1], paper[0]))
+        OUTPUT_FILE_BRIEF.write("\subsection{%s~\cite{%s}}\n" % (paper[1], paper[0]))
+        OUTPUT_FILE_BRIEF.write("\\begin{itemize}\n\t\item \\textbf{HEP Context: }%s\n\t\item \\textbf{Methods: }%s\n\t\item \\textbf{Results and Conclusions: }%s\n\end{itemize}" % (paper[6], paper[7], paper[8]))
+        OUTPUT_FILE_DETAIL.write("\subsection{%s~\cite{%s}}\n" % (paper[1], paper[0]))
         OUTPUT_FILE_DETAIL.write("%s\n" % (paper[3]))
    
     if len(cat_papers) != 0:
-        OUTPUT_FILE_BRIEF.write("\end{itemize}\n")
+        OUTPUT_FILE_LIST.write("\end{itemize}\n")
+    OUTPUT_FILE_LIST.write("\n\n")
     OUTPUT_FILE_BRIEF.write("\n\n")
     OUTPUT_FILE_DETAIL.write("\n\n")
     
     for subentry in subcategories:
+        OUTPUT_FILE_LIST.write("\subsection{%s}\n\n" % subentry.strip('\''))
         OUTPUT_FILE_BRIEF.write("\subsection{%s}\n\n" % subentry.strip('\''))
         OUTPUT_FILE_DETAIL.write("\subsection{%s}\n\n" % subentry.strip('\''))
 
@@ -64,14 +70,16 @@ for entry in categories:
         cat_papers = df_subcat.values.tolist()
         # Formatting and write to file
         if len(cat_papers) != 0:
-            OUTPUT_FILE_BRIEF.write("\\begin{itemize}\n")
+            OUTPUT_FILE_LIST.write("\\begin{itemize}\n")
         for paper in cat_papers:
-            OUTPUT_FILE_BRIEF.write("   \item %s~\cite{%s}\n" % (paper[1], paper[0]))
+            OUTPUT_FILE_LIST.write("   \item %s~\cite{%s}\n" % (paper[1], paper[0]))
+            OUTPUT_FILE_BRIEF.write("\subsubsection{%s~\cite{%s}}\n" % (paper[1], paper[0]))
+            OUTPUT_FILE_BRIEF.write("\\begin{itemize}\n\t\item \\textbf{HEP Context: }%s\n\t\item \\textbf{Methods: }%s\n\t\item \\textbf{Results and Conclusions: }%s\n\end{itemize}" % (paper[6], paper[7], paper[8]))
             OUTPUT_FILE_DETAIL.write("\subsubsection{%s~\cite{%s}}\n" % (paper[1], paper[0]))
             OUTPUT_FILE_DETAIL.write("%s\n" % (paper[3]))
         
         if len(cat_papers) != 0:
-            OUTPUT_FILE_BRIEF.write("\end{itemize}\n")
-        OUTPUT_FILE_BRIEF.write("\n\n")
+            OUTPUT_FILE_LIST.write("\end{itemize}\n")
+        OUTPUT_FILE_LIST.write("\n\n")
         OUTPUT_FILE_DETAIL.write("\n\n")
 
