@@ -12,7 +12,7 @@ OUTPUT_FILE.write('\n**🟥🟥🟥 Warning! LaTeX formatting in GitHub (used in
 # PDF Decription
 OUTPUT_FILE.write('\n**<a href=\"https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS_LIST.pdf\"> PDF of list of references </a>**\n\n')
 OUTPUT_FILE.write('\n**<a href=\"https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS_BRIEF.pdf\"> PDF of references with short descriptions (HEP context, methods, results and conclusions) </a>**\n\n')
-OUTPUT_FILE.write('\n**<a href=\"https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS_DETAIL.pdf\"> PDF of references with detailed summaries </a>**\n\n')
+OUTPUT_FILE.write('\n**<a href=\"https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS_DETAIL.pdf\"> PDF of references with detailed descriptions </a>**\n\n')
 
 # Abstract
 OUTPUT_FILE.write("*Inspired by \"A Living Review of Machine Learning for Particle Physics\", the goal of this repository is to provide an extensive list of citations for those developing and applying quantum information approaches to experimental, phenomenological, or theoretical analyses.  Applications of quantum information science to high energy physics is a relatively new field of research.  This repository will be updated as often as possible with the relevant literature.  Suggestions are most welcome.*\n\n")
@@ -54,7 +54,7 @@ for entry in categories:
         elif paper[5] is not None:
             OUTPUT_FILE.write("<summary> <a href=\"%s\"> %s</a></summary>" % (paper[5], paper[1]))
 
-        OUTPUT_FILE.write("\n\n***HEP Context:*** *%s*\n\n***Methods:*** *%s*\n\n***Results and Conclusions:*** *%s*" % (paper[6].strip('\"'), paper[7].strip('\"'), paper[8].strip('\"')))
+        OUTPUT_FILE.write("\n\n+ ***HEP Context:*** *%s*\n+ ***Methods:*** *%s*\n+ ***Results and Conclusions:*** *%s*" % (paper[6].strip('\"'), paper[7].strip('\"'), paper[8].strip('\"')))
         OUTPUT_FILE.write("\n\n%s\n\n" % paper[3].strip('\"'))
         OUTPUT_FILE.write("</details>\n\n")
     
@@ -75,7 +75,7 @@ for entry in categories:
             elif paper[5] is not None:
                 OUTPUT_FILE.write("<summary> <a href=\"%s\"> %s</a></summary>" % (paper[5], paper[1]))
 
-            OUTPUT_FILE.write("\n\n***HEP Context:*** *%s*\n\n***Methods:*** *%s*\n\n***Results and Conclusions:*** *%s*" % (paper[6].strip('\"'), paper[7].strip('\"'), paper[8].strip('\"')))
+            OUTPUT_FILE.write("\n\n+ ***HEP Context:*** *%s*\n+ ***Methods:*** *%s*\n+ ***Results and Conclusions:*** *%s*" % (paper[6].strip('\"'), paper[7].strip('\"'), paper[8].strip('\"')))
             OUTPUT_FILE.write("\n\n%s\n\n" % paper[3].strip('\"'))
             OUTPUT_FILE.write("</details>\n\n")
         OUTPUT_FILE.write("\n\n")
