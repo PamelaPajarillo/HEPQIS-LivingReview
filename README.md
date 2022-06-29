@@ -281,5 +281,137 @@ TBD
 
 ##  **TBD**
 
+<details>
+<summary> <a href="https://arxiv.org/abs/2012.12177"> Quantum convolutional neural networks for high energy physics data analysis</a> [<a href="https://doi.org/10.1103/PhysRevResearch.4.013231">DOI</a>]</summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2101.06189"> Hybrid Quantum-Classical Graph Convolutional Network</a></summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2010.07335"> Quantum Machine Learning for Particle Physics using a Variational Quantum Classifier</a> [<a href="https://doi.org/10.1007/JHEP02(2021)212">DOI</a>]</summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/1902.08324"> A pattern recognition algorithm for quantum annealers</a> [<a href="https://doi.org/10.1007/s41781-019-0032-5">DOI</a>]</summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/1908.08949"> Quantum Algorithms for Jet Clustering</a> [<a href="https://doi.org/10.1103/PhysRevD.101.094015">DOI</a>]</summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2104.11583"> Quantum speedup for track reconstruction in particle accelerators</a> [<a href="https://doi.org/10.1103/PhysRevD.105.076012">DOI</a>]</summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2012.14514"> Adiabatic Quantum Algorithm for Multijet Clustering in High Energy Physics</a></summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2010.00649"> Application of a Quantum Search Algorithm to High- Energy Physics Data at the Large Hadron Collider</a></summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2203.03578"> Unsupervised Quantum Circuit Learning in High Energy Physics</a></summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2103.12257"> Quantum Support Vector Machines for Continuum Suppression in B Meson Decays</a> [<a href="https://doi.org/10.1007/s41781-021-00075-x">DOI</a>]</summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2103.03897"> Unsupervised event classification with graphs on classical and photonic quantum computers</a> [<a href="https://doi.org/10.1007/JHEP08(2021)170">DOI</a>]</summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2104.07692"> Higgs analysis with quantum classifiers</a> [<a href="https://doi.org/10.1051/epjconf/202125103070">DOI</a>]</summary>
+
++ ***HEP Context:*** *TBD*
++ ***Methods:*** *TBD*
++ ***Results and Conclusions:*** *TBD*
+
+TBD
+
+</details>
+
 
 
