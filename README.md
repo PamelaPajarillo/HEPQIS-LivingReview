@@ -66,6 +66,39 @@ TBD
 
 </details>
 
+<details>
+<summary> <a href="https://arxiv.org/abs/2203.07117"> Snowmass white paper: Quantum information in quantum field theory and quantum gravity</a></summary>
+
++ <em><strong>HEP Context:</strong></em> <em>TBD</em>
++ <em><strong>Methods:</strong></em> <em>TBD</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>TBD</em>
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2203.14915"> New Horizons: Scalar and Vector Ultralight Dark Matter</a></summary>
+
++ <em><strong>HEP Context:</strong></em> <em>TBD</em>
++ <em><strong>Methods:</strong></em> <em>TBD</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>TBD</em>
+
+TBD
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2203.16979"> Quantum Networks for High Energy Physics</a></summary>
+
++ <em><strong>HEP Context:</strong></em> <em>TBD</em>
++ <em><strong>Methods:</strong></em> <em>TBD</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>TBD</em>
+
+TBD
+
+</details>
+
 
 
 ##  **Quantum Optimization Algorithms Based on Gate-Based Quantum Computers**
