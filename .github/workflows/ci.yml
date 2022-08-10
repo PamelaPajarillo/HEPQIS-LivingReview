@@ -31,10 +31,22 @@ jobs:
     - name: Test README generation
       run: |
         cp README.md README.bak
-        python make_md.py
+        cp BY_HEP/README.md BY_HEP/README.bak
+        cp BY_QIS/README.md BY_QIS/README.bak
+        python make_hepqis.py
         if [[ "$(diff README.md README.bak)" ]]; then
-           echo "ERROR: README is out of sync with HEPQIS.bib"
-           echo "       run make_md.py and commit changes"
+           echo "ERROR: Main README is out of sync"
+           echo "       run make_hepqis.py and commit changes"
+           exit 1
+        fi
+        if [[ "$(diff BY_HEP/README.md BY_HEP/README.bak)" ]]; then
+           echo "ERROR: HEP README is out of sync"
+           echo "       run make_hepqis.py and commit changes"
+           exit 1
+        fi
+        if [[ "$(diff BY_QIS/README.md BY_QIS/README.bak)" ]]; then
+           echo "ERROR: QIS README is out of sync"
+           echo "       run make_hepqis.py and commit changes"
            exit 1
         fi
         ls -lhtra

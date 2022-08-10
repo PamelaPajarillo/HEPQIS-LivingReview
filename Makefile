@@ -1,48 +1,46 @@
-FILENAME = HEPQIS
-FILENAME_BRIEF = HEPQIS_BRIEF
-FILENAME_DETAIL = HEPQIS_DETAIL
-FILENAME_LIST = HEPQIS_LIST
-
 date = $(shell date +%Y-%m-%d)
-output_brief_file = draft_brief_$(date).pdf
-output_detail_file = draft_detail_$(date).pdf
-output_list_file = draft_list_$(date).pdf
 
-LATEX = lualatex
-BIBTEX = bibtex
+define compile_latex
+	cp HEPQIS.tex BY_$(1)/$(2).tex
+	cp jheppub.sty JHEP.bst HEPQIS.bib BY_$(1)/
+	sed -i 's/TYPE/$(2)/g' BY_$(1)/$(2).tex
+	sed -i 's/SUBJECT/$(1)/g' BY_$(1)/$(2).tex
+	cd BY_$(1); latexmk -lualatex -logfilewarnings -halt-on-error $(2)
+	cp BY_$(1)/$(2).pdf BY_$(1)/BY$(1)_$(2).pdf
+	rm -f BY_$(1)/$(2)* BY_$(1)/jheppub.sty BY_$(1)/JHEP.bst BY_$(1)/BY$(1)_$(2).tex BY_$(1)/HEPQIS.bib
+endef
 
-all: default
+define backup
+	rsync BY_$(1)/BY$(1)_$(2).pdf BY_$(1)/DRAFTS/draft_$(2)_$(3).pdf
+endef
+
+all: hepqis default
 
 default: document copy_draft
 
-document: brief detail list
-	
-brief:
-	cp HEPQIS.tex BRIEF.tex
-	sed -i 's/INPUTFILE/BRIEF/g' BRIEF.tex
-	latexmk -$(LATEX) -logfilewarnings -halt-on-error BRIEF
-	cp BRIEF.pdf $(FILENAME_BRIEF).pdf
-	rm -f BRIEF*
+document: hep qis
 
-detail:
-	cp HEPQIS.tex DETAIL.tex
-	sed -i 's/INPUTFILE/DETAIL/g' DETAIL.tex
-	latexmk -$(LATEX) -logfilewarnings -halt-on-error DETAIL
-	cp DETAIL.pdf $(FILENAME_DETAIL).pdf
-	rm -f DETAIL*
+hepqis: make_hepqis.py
+	python3 make_hepqis.py
 
-list:
-	cp HEPQIS.tex LIST.tex
-	sed -i 's/INPUTFILE/LIST/g' LIST.tex
-	latexmk -$(LATEX) -logfilewarnings -halt-on-error LIST
-	cp LIST.pdf $(FILENAME_LIST).pdf
-	rm -f LIST*
+hep:
+	$(call compile_latex,HEP,LIST)
+	$(call compile_latex,HEP,BRIEF)
+	$(call compile_latex,HEP,DETAIL)
+
+qis:
+	$(call compile_latex,QIS,LIST)
+	$(call compile_latex,QIS,BRIEF)
+	$(call compile_latex,QIS,DETAIL)
 
 copy_draft:
-	rsync $(FILENAME_BRIEF).pdf $(output_brief_file)
-	rsync $(FILENAME_DETAIL).pdf $(output_detail_file)
-	rsync $(FILENAME_LIST).pdf $(output_list_file)
-
+	$(call backup,HEP,LIST,$(date))
+	$(call backup,HEP,BRIEF,$(date))
+	$(call backup,HEP,DETAIL,$(date))
+	$(call backup,QIS,LIST,$(date))
+	$(call backup,QIS,BRIEF,$(date))
+	$(call backup,QIS,DETAIL,$(date))
+	
 clean:
 	rm -f *.aux *.bak *.bbl *.blg *.dvi *.idx *.lof *.log *.lot *.toc \
 		*.glg *.gls *.glo *.xdy *.nav *.out *.snm *.vrb *.mp \
