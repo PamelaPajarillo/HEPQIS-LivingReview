@@ -73,7 +73,16 @@ def get_categories(csv_file):
     
     return categories, df_csv
 
-def write_papers_to_md(output_file, categories, df):
+def list_subcategories_to_md(OUTPUT_FILE_MAIN, OUTPUT_FILE_RUN, subcategories, df_csv, run_type):
+    for category in subcategories:
+        if (category != 'Reviews') and (category != 'Whitepapers') and (category != 'Uncategorized by %s - TEMPORARY' % run_type):
+            OUTPUT_FILE_MAIN.write("* [![Papers-%s](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_%s/README.md#%s-) [![Descriptions-%s](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_%s/CATEGORIES.md#%s-) **%s**  \n" % (category.replace(" ", "-").lower(), run_type, category.replace(" ", "-").lower(), category.replace(" ", "-").lower(), run_type, category.replace(" ", "-").lower(), category))
+            OUTPUT_FILE_RUN.write("## **%s** [![Papers-%s](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_%s/README.md#%s-)\n" % (category, category.replace(" ", "-").lower(), run_type, category.replace(" ", "-").lower()))
+            OUTPUT_FILE_RUN.write("%s\n\n" % df_csv.loc[df_csv['Category'] == category]['Description'].values[0])
+    OUTPUT_FILE_MAIN.write("\n\n")
+    OUTPUT_FILE_RUN.write("\n\n")
+    
+def write_papers_to_md(output_file, categories, df, run_type):
 
     # Indices of table to check for LaTeX formatting and change to Markdown
     text_check = [3, 6, 7, 8]
@@ -82,7 +91,10 @@ def write_papers_to_md(output_file, categories, df):
     for entry in categories:
 
         # Print Title of Main Category
-        output_file.write("##  **%s**\n\n" % entry)
+        if (entry != 'Reviews') and (entry != 'Whitepapers') and (entry != 'Uncategorized by %s - TEMPORARY' % run_type):
+            output_file.write("##  **%s** [![Descriptions-%s](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_%s/CATEGORIES.md#%s-)\n\n" % (entry, entry.replace(" ", "-").lower(), run_type, entry.replace(" ", "-").lower()))
+        else:
+            output_file.write("##  **%s**\n\n" % (entry))
 
         # Retrieve papers by checking for substring in categories
         df_cat = df.loc[df['Categories'].str.contains(entry, case=False)]
@@ -92,11 +104,11 @@ def write_papers_to_md(output_file, categories, df):
         for paper in cat_papers:
             output_file.write("<details>\n")
             if (paper[4] is not None) and (paper[5] is not None):
-                output_file.write("<summary> <a href=\"%s\"> %s</a> [<a href=\"%s\">DOI</a>] <code>Expand/Collapse</code> </summary>" % (paper[4], paper[1], paper[5]))
+                output_file.write("<summary> <a href=\"%s\"> %s</a> [<a href=\"%s\">DOI</a>] <code>Expand</code> </summary>" % (paper[4], paper[1], paper[5]))
             elif paper[4] is not None:
-                output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand/Collapse</code> </summary>" % (paper[4], paper[1]))
+                output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code> </summary>" % (paper[4], paper[1]))
             elif paper[5] is not None:
-                output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand/Collapse</code> </summary>" % (paper[5], paper[1]))
+                output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code> </summary>" % (paper[5], paper[1]))
 
             # Reformat LaTeX to Markdown
             for i in text_check:
