@@ -1,16 +1,16 @@
 #  **Descriptions of HEP Topics**
 
-**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to the [PDF version found here](/BY_HEP/BYHEP_DETAIL.pdf)</a> ⚠️⚠️⚠️**
+**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to the [PDF version found here](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_HEP/BYHEP_DETAIL.pdf) ⚠️⚠️⚠️**
 
-[![HEPCAT_TO_HEP](https://img.shields.io/badge/Link_to-HEP-5BC0EB)](/BY_HEP#readme) ⟵ Click the following for the living review organized by HEP topics  
-[![HEPCAT_TO_QIS](https://img.shields.io/badge/Link_to-QIS-9BC53D)](/BY_QIS#readme) ⟵ Click the following for the living review organized by QIS topics  
+[![HEPCAT_TO_HEP](https://img.shields.io/badge/Link_to-HEP_-5BC0EB)](/BY_HEP#readme) ⟵ Click the following for the living review organized by HEP topics  
+[![HEPCAT_TO_QIS](https://img.shields.io/badge/Link_to-QIS_-9BC53D)](/BY_QIS#readme) ⟵ Click the following for the living review organized by QIS topics  
 [![HEPCAT_TO_MAIN](https://img.shields.io/badge/Link_to-Main-FDE74C)](/../../#readme) ⟵ Click the following to go to the main living review page  
 
-## **Jet Clustering** [![Papers-jet-clustering](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#jet-clustering-)
+## **Jet Algorithms and Jet Tagging** [![Papers-jet-algorithms-and-jet-tagging](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#jet-algorithms-and-jet-tagging-)
 To be written
 
 ## **Track Reconstruction** [![Papers-track-reconstruction](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#track-reconstruction-)
-To be written
+Given a set of signals, known as hits, from a detector's multiple layers of sensors, the goal is to cluster them into a collection of hits that come from the same particle. Each collision may produce a few thousand hits, making track reconstruction computationally demanding. 
 
 ## **Event Generation** [![Papers-event-generation](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#event-generation-)
 To be written
@@ -19,9 +19,6 @@ To be written
 To be written
 
 ## **Signal-Background Discrimination** [![Papers-signal-background-discrimination](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#signal-background-discrimination-)
-To be written
-
-## **Jet Classification** [![Papers-jet-classification](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#jet-classification-)
 To be written
 
 ## **Anomaly Detection** [![Papers-anomaly-detection](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#anomaly-detection-)
@@ -46,6 +43,4 @@ To be written
 To be written
 
 
-
-**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to the [PDF version found here](/BY_QIS/BYQIS_DETAIL.pdf)</a> ⚠️⚠️⚠️**
 

@@ -1,14 +1,14 @@
 #  **A Living Review of Quantum Information Science in High Energy Physics Organized by QIS Topics**
 
-**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions of each paper) is not functioning properly. Please refer to the [PDF version found here](/BY_QIS/BYQIS_DETAIL.pdf)</a> ⚠️⚠️⚠️**
+**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions of each paper) is not functioning properly. Please refer to the [PDF version found here](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_QIS/BYQIS_DETAIL.pdf) ⚠️⚠️⚠️**
 
 [![QIS_TO_HEP](https://img.shields.io/badge/Link_to-HEP-5BC0EB)](/BY_HEP#readme) ⟵ Click the following for the living review organized by QIS topics  
 [![QIS_TO_MAIN](https://img.shields.io/badge/Link_to-Main-FDE74C)](/../../#readme) ⟵ Click the following to go to the main living review page  
 
 ## **PDF Versions** 
-[![QIS_LIST](https://img.shields.io/badge/Download_PDF-List-ffcce7)](/BY_QIS/BYQIS_LIST.pdf) ⟵ PDF of list of references  
-[![QIS_BRIEF](https://img.shields.io/badge/Download_PDF-List-daf2dc)](/BY_QIS/BYQIS_BRIEF.pdf) ⟵ PDF of references with short descriptions (QIS context, methods, results and conclusions)  
-[![QIS_DETAIL](https://img.shields.io/badge/Download_PDF-Detail-81b7df)](/BY_QIS/BYQIS_DETAIL.pdf) ⟵ PDF of references with detailed descriptions  
+[![QIS_LIST](https://img.shields.io/badge/Download_PDF-List-ffcce7)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_QIS/BYQIS_LIST.pdf) ⟵ PDF of list of references  
+[![QIS_BRIEF](https://img.shields.io/badge/Download_PDF-Brief-daf2dc)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_QIS/BYQIS_BRIEF.pdf) ⟵ PDF of references with short descriptions (HEP context, QIS methods, results and conclusions)  
+[![QIS_DETAIL](https://img.shields.io/badge/Download_PDF-Detail-81b7df)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_QIS/BYQIS_DETAIL.pdf) ⟵ PDF of references with detailed descriptions  
 ##  **Reviews**
 
 <details>
@@ -31,7 +31,7 @@ This review presents papers using quantum machine learning (QML) to perform clas
 
 + <em><strong>HEP Context:</strong></em> <em>Object reconstruction (tracking problem and thrust for jet clustering), signal-background discrimination, detector simulations, and Monte Carlo event generation</em>
 + <em><strong>Methods:</strong></em> <em>Amplitude amplification (generalization of Grover's algorithm), quantum annealing, hybrid quantum-classical neural networks, variational quantum circuits, quantum support vector machines, quantum convolutional neural networks, quantum variational autoencoders, and quantum generative models (quantum generative adversarial network and quantum circuit born machine)</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em><strong>In object reconstruction:</strong> ; <strong>In classification:</strong> the quantum implentation of the Combinatorial Kalman Filter based on amplitude amplification has a rigorous proof of quantum speedup, however; <strong>In detector simulations and Monte Carlo event generation:</strong> ; <strong>Challenges and prospects:</strong> </em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
 
@@ -112,7 +112,7 @@ This review presents papers using quantum machine learning (QML) to perform clas
 
 + <em><strong>HEP Context:</strong></em> <em>Object reconstruction (tracking problem and thrust for jet clustering), signal-background discrimination, detector simulations, and Monte Carlo event generation</em>
 + <em><strong>Methods:</strong></em> <em>Amplitude amplification (generalization of Grover's algorithm), quantum annealing, hybrid quantum-classical neural networks, variational quantum circuits, quantum support vector machines, quantum convolutional neural networks, quantum variational autoencoders, and quantum generative models (quantum generative adversarial network and quantum circuit born machine)</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em><strong>In object reconstruction:</strong> ; <strong>In classification:</strong> the quantum implentation of the Combinatorial Kalman Filter based on amplitude amplification has a rigorous proof of quantum speedup, however; <strong>In detector simulations and Monte Carlo event generation:</strong> ; <strong>Challenges and prospects:</strong> </em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
 
@@ -121,9 +121,9 @@ To be written
 <details>
 <summary> <a href="https://doi.org/10.1038/nature24047"> Solving a Higgs optimization problem with quantum annealing for machine learning</a> <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
++ <em><strong>HEP Context:</strong></em> <em>Higgs signal-background discrimination, in which kinematic variables describing diphoton processes corresponds to either to a Higgs boson decay (signal) or other Standard Model processes (background).</em>
++ <em><strong>Methods:</strong></em> <em>The strong classifier is then constructed from a linear combination of weak classifiers, where the weights are obtained through an optimization problem, which have a mapping to a quadratic unconstrained binary optimization (QUBO) problem. D-Wave's quantum annealer is used to solve the QUBO problem.</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>Quantum and classical annealing-based classifiers perform comparably with no clear advantage to traditional machine learning methods, including deep neural network (DNN) and an ensemble of boosted decision trees (BDTs).</em>
 
 Using D-Wave's programmable quantum annealer, this paper explores quantum annealing for machine learning (QAML). The paper shows that quantum and classical annealing-based classifiers perform comparably with no clear advantage to traditional machine learning methods, including deep neural network (DNN) and an ensemble of boosted decision trees (BDTs), to solve a Higgs signal-background discrimination machine learning optimimzation problem, which identifies features from a pair of photons correspond to a decay from the Higgs or other Standard Model processes. The inputs of the weak binary classifiers are the encoded transverse momentum of photons and the correlations between the two photons. The strong classifier is then constructed from a linear combination of weak classifiers, where the weights are obtained through an optimization problem, which must have a mapping to a quadratic unconstrained binary optimization (QUBO) problem. This classifier is resistant to overfitting, since due to noise, the D-Wave quantum annealer will avoid the global minimum of the loss functional, and it has a slight advantage over BDT and DNN with a smaller training dataset.
 
@@ -132,11 +132,11 @@ Using D-Wave's programmable quantum annealer, this paper explores quantum anneal
 <details>
 <summary> <a href="https://arxiv.org/abs/1908.04480"> Quantum adiabatic machine learning with zooming</a> [<a href="https://doi.org/10.1103/PhysRevA.102.062405">DOI</a>] <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
++ <em><strong>HEP Context:</strong></em> <em>Higgs signal-background discrimination, in which kinematic variables describing diphoton processes corresponds to either to a Higgs boson decay (signal) or other Standard Model processes (background)</em>
++ <em><strong>Methods:</strong></em> <em>By iteratively perform quantum annealing, the binary weights on the weak classifiers can be made continuous, which results in a stronger classifier.</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>QAML-Z does not show an obvious advantage over traditional machine learning methods, including deep neural networks (DNNs) and boosted decision trees (BDTs), however, its performance surpasses the QAML algorithm and simulated annealing with zooming.</em>
 
-Inspired by quantum annealing for machine learning (QAML), which constructs a strong classifier from a linear combination of weak binary classifiers. this paper proposes a variant called QAML-Z, where the binary classifiers are modified to continuous real values by performing a search on the real numbers. This works by zooming into a region of the energy surface and iteratively perform quantum annealing to an augmented set of weak classifiers, which then makes a strong classifier. The iteration rule that gives the weight of each classifier consists of shifting the value of mean based on the spin of the qubit then narrowing the search breadth. The zooming algorithm increases the probability of overfitting, so the authors of the paper propose regularizing the iterative process by applying a bit flip between each iteration with monotonically decreasing probability. This effectively prevents the strong classifier from overfitting and overcomes getting out of a local minima. The QAML-Z algorithm is applied to the Higgs optimization problem, where features of a diphoton event must be identified in order to classify events as a Higgs decay or other Standard Model processes. QAML-Z does not show an obvious advantage over traditional machine learning methods, including deep neural networks (DNNs) and boosted decision trees (BDTs), however, its performance surpasses the QAML algorithm and simulated annealing with zooming.
+Inspired by quantum annealing for machine learning (QAML), which constructs a strong classifier from a linear combination of weak binary classifiers, this paper proposes a variant called QAML-Z, where the binary classifiers are modified to continuous real values by performing a search on the real numbers. This works by zooming into a region of the energy surface and iteratively perform quantum annealing to an augmented set of weak classifiers, which then makes a strong classifier. The iteration rule that gives the weight of each classifier consists of shifting the value of mean based on the spin of the qubit then narrowing the search breadth. The zooming algorithm increases the probability of overfitting, so the authors of the paper propose regularizing the iterative process by applying a bit flip between each iteration with monotonically decreasing probability. This effectively prevents the strong classifier from overfitting and overcomes getting out of a local minima. The QAML-Z algorithm is applied to the Higgs optimization problem, where features of a diphoton event must be identified in order to classify events as a Higgs decay or other Standard Model processes. QAML-Z does not show an obvious advantage over traditional machine learning methods, including deep neural networks (DNNs) and boosted decision trees (BDTs), however, its performance surpasses the QAML algorithm and simulated annealing with zooming.
 
 </details>
 
@@ -166,8 +166,8 @@ To be written
 <summary> <a href="https://arxiv.org/abs/1908.08949"> Quantum Algorithms for Jet Clustering</a> [<a href="https://doi.org/10.1103/PhysRevD.101.094015">DOI</a>] <code>Expand</code> </summary>
 
 + <em><strong>HEP Context:</strong></em> <em>Thrust, an event shape whose optimum corresponds to the most jet-like separating plane among a set of particles, focusing on the case of electron-positron collisions</em>
-+ <em><strong>Methods:</strong></em> <em>1) Created a quantum algorithm based on quantum annealing (enconded optimization problem as a QUBO problem); 2) Created quantum algorithm based on Grover search and describes two computing models, sequential model and parallel model, for loading classical data into quantum memory.</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>The overhead of data loading must be carefully considered when evaluating the potential for quantum speedups on classical datasets.</em>
++ <em><strong>Methods:</strong></em> <em>(1) Created a quantum algorithm based on quantum annealing (enconded optimization problem as a QUBO problem); (2) Created quantum algorithm based on Grover search and describes two computing models, sequential model and parallel model, for loading classical data into quantum memory.</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>The computational costs of data loading must be carefully considered when evaluating the potential for quantum speedups on classical datasets.</em>
 
 To be written
 
@@ -187,7 +187,7 @@ To be written
 <details>
 <summary> <a href="https://arxiv.org/abs/2111.07806"> Leveraging Quantum Annealer to identify an Event-topology at High Energy Colliders</a> <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>HEP Context:</strong></em> <em>Identify an event-topology, a diagram to describe the history of the particles produced at the LHC</em>
 + <em><strong>Methods:</strong></em> <em>To be written</em>
 + <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
@@ -220,7 +220,7 @@ To be written
 <details>
 <summary> <a href="https://arxiv.org/abs/2012.14514"> Adiabatic Quantum Algorithm for Multijet Clustering in High Energy Physics</a> <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em>Jet clustering</em>
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
 + <em><strong>Methods:</strong></em> <em>To be written</em>
 + <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
@@ -314,7 +314,7 @@ This review presents papers using quantum machine learning (QML) to perform clas
 
 + <em><strong>HEP Context:</strong></em> <em>Object reconstruction (tracking problem and thrust for jet clustering), signal-background discrimination, detector simulations, and Monte Carlo event generation</em>
 + <em><strong>Methods:</strong></em> <em>Amplitude amplification (generalization of Grover's algorithm), quantum annealing, hybrid quantum-classical neural networks, variational quantum circuits, quantum support vector machines, quantum convolutional neural networks, quantum variational autoencoders, and quantum generative models (quantum generative adversarial network and quantum circuit born machine)</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em><strong>In object reconstruction:</strong> ; <strong>In classification:</strong> the quantum implentation of the Combinatorial Kalman Filter based on amplitude amplification has a rigorous proof of quantum speedup, however; <strong>In detector simulations and Monte Carlo event generation:</strong> ; <strong>Challenges and prospects:</strong> </em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
 
@@ -356,8 +356,8 @@ In this paper, two quantum machine learning (QML) algorithms based on gate-based
 <details>
 <summary> <a href="https://arxiv.org/abs/2202.13943"> Quantum Machine Learning for $b$-jet identification</a> <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em><em>b</em>-jet tagging at LHCb</em>
-+ <em><strong>Methods:</strong></em> <em>Variational quantum classifier</em>
++ <em><strong>HEP Context:</strong></em> <em>$b$-jet tagging at LHCb</em>
++ <em><strong>Methods:</strong></em> <em>Variational quantum classifiers, using two different embeddings of the data: (1) Amplitude Embedding; (2) Angle Embedding</em>
 + <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
@@ -430,6 +430,17 @@ To be written
 
 </details>
 
+<details>
+<summary> <a href="https://arxiv.org/abs/2203.03578"> Unsupervised Quantum Circuit Learning in High Energy Physics</a> <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>Methods:</strong></em> <em>Quantum Circuit Born Machines (QCBM)</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
 
 
 ##  **Quantum Support Vector Machines** [![Descriptions-quantum-support-vector-machines](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_QIS/CATEGORIES.md#quantum-support-vector-machines-)
@@ -439,7 +450,7 @@ To be written
 
 + <em><strong>HEP Context:</strong></em> <em>Object reconstruction (tracking problem and thrust for jet clustering), signal-background discrimination, detector simulations, and Monte Carlo event generation</em>
 + <em><strong>Methods:</strong></em> <em>Amplitude amplification (generalization of Grover's algorithm), quantum annealing, hybrid quantum-classical neural networks, variational quantum circuits, quantum support vector machines, quantum convolutional neural networks, quantum variational autoencoders, and quantum generative models (quantum generative adversarial network and quantum circuit born machine)</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em><strong>In object reconstruction:</strong> ; <strong>In classification:</strong> the quantum implentation of the Combinatorial Kalman Filter based on amplitude amplification has a rigorous proof of quantum speedup, however; <strong>In detector simulations and Monte Carlo event generation:</strong> ; <strong>Challenges and prospects:</strong> </em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
 
@@ -453,6 +464,54 @@ To be written
 + <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To classify signal and background events in the $t\bar{t}H$ analysis, the use of a support vector machine (SVM) with a quantum kernel estimator (QSVM-Kernel) is explored. A major limitation of the classical SVM is evaluating the similarity between any two data points in a large feature space is computationally expensive. The QSVM-Kernel algorithm exploits the quantum state space as a direct representation of the feature space, which gives rise to kernel functions that are hard to calculate classically, but are efficiently evaluated using quantum kernels. The QSVM-Kernel algorithm is the following: (1) Using a Quantum Feature Map function, map classical data to a quantum state; (2) Calculate the similarity between any two data points using a quantum computer; and finally (3) To find the separate hyperplane, use the kernel entries. This algorithm is then applied to separate between $t\bar{t}H$ (signal) and non-resonant di-photons (background). The quantum simulators used in this paper are from IBM, Google, and Amazon, all of which model the noiseless execution of their respective quantum computer hardware. The performance of these quantum simulators, using 15 qubits and 60 independent datasets of 20000 training events and 20000 testing events, are similar to the performance of a classical SVM and a classical BDT. The QSVM-Kernel algorithm is then implemented on IBM's quantum processor. The mean performance of QSVM-Kernel on IBM's quantum processor and IBM's quantum computer simulator is about 5\% lower. This difference is expected due to hardware noise. The results on IBM's quantum processor does approach the performance of IBM's quantum computer simulator. The paper concludes that the running time is expected to be reduced with improved quantum hardware and predicts that quantum machine learning could potentially become a powerful tool for HEP data analyses.
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2103.12257"> Quantum Support Vector Machines for Continuum Suppression in B Meson Decays</a> [<a href="https://doi.org/10.1007/s41781-021-00075-x">DOI</a>] <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>Signal-background classification, where signal is $B\bar{B}$ pair events, and background is $q\bar{q}$ pair events</em>
++ <em><strong>Methods:</strong></em> <em>Quantum Support Vector Machine (QSVM)</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
+
+
+##  **Quantum Convolutional Neural Networks** [![Descriptions-quantum-convolutional-neural-networks](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_QIS/CATEGORIES.md#quantum-convolutional-neural-networks-)
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2203.08805"> Quantum Computing for Data Analysis in High-Energy Physics</a> <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>Object reconstruction (tracking problem and thrust for jet clustering), signal-background discrimination, detector simulations, and Monte Carlo event generation</em>
++ <em><strong>Methods:</strong></em> <em>Amplitude amplification (generalization of Grover's algorithm), quantum annealing, hybrid quantum-classical neural networks, variational quantum circuits, quantum support vector machines, quantum convolutional neural networks, quantum variational autoencoders, and quantum generative models (quantum generative adversarial network and quantum circuit born machine)</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2012.12177"> Quantum convolutional neural networks for high energy physics data analysis</a> [<a href="https://doi.org/10.1103/PhysRevResearch.4.013231">DOI</a>] <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>Classification of $\mu^+$, $e^-$, $\pi^+$, and $p$ at the Liquid Argon Time Projection Chamber (LArTPC) at Deep Underground Neutrino Experiment (DUNE)</em>
++ <em><strong>Methods:</strong></em> <em>Quantum Convolutional Neural Network (QCNN) using Variational Quantum Circuits (VQC)</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2101.06189"> Hybrid Quantum-Classical Graph Convolutional Network</a> <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>Classification of $\mu^+$, $e^-$, $\pi^+$, and $p$ at the Liquid Argon Time Projection Chamber (LArTPC) at Deep Underground Neutrino Experiment (DUNE)</em>
++ <em><strong>Methods:</strong></em> <em>Hybrid Quantum-Classical Graph Convolutional Neural Network (QGCNN) using Variational Quantum Circuits (VQC)</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
 
 </details>
 
@@ -486,8 +545,8 @@ To be written
 <summary> <a href="https://arxiv.org/abs/1908.08949"> Quantum Algorithms for Jet Clustering</a> [<a href="https://doi.org/10.1103/PhysRevD.101.094015">DOI</a>] <code>Expand</code> </summary>
 
 + <em><strong>HEP Context:</strong></em> <em>Thrust, an event shape whose optimum corresponds to the most jet-like separating plane among a set of particles, focusing on the case of electron-positron collisions</em>
-+ <em><strong>Methods:</strong></em> <em>1) Created a quantum algorithm based on quantum annealing (enconded optimization problem as a QUBO problem); 2) Created quantum algorithm based on Grover search and describes two computing models, sequential model and parallel model, for loading classical data into quantum memory.</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>The overhead of data loading must be carefully considered when evaluating the potential for quantum speedups on classical datasets.</em>
++ <em><strong>Methods:</strong></em> <em>(1) Created a quantum algorithm based on quantum annealing (enconded optimization problem as a QUBO problem); (2) Created quantum algorithm based on Grover search and describes two computing models, sequential model and parallel model, for loading classical data into quantum memory.</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>The computational costs of data loading must be carefully considered when evaluating the potential for quantum speedups on classical datasets.</em>
 
 To be written
 
@@ -526,7 +585,7 @@ To be written
 <details>
 <summary> <a href="https://arxiv.org/abs/2103.03897"> Unsupervised event classification with graphs on classical and photonic quantum computers</a> [<a href="https://doi.org/10.1007/JHEP08(2021)170">DOI</a>] <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em>Anomaly detection, where background is $pp \rightarrow Z +$ jets events, and signal is $pp \rightarrow HZ$ events with subsequent decays $H \rightarrow A_1 A2$, $A_2 \rightarrow gg$, and $A_1 \rightarrow gg$, and the $Z$ boson decays leptonically to either $e$ or $\mu$</em>
++ <em><strong>HEP Context:</strong></em> <em>Anomaly detection, where background is $pp \rightarrow Z +$ jets events, and signal is $pp \rightarrow HZ$ events with subsequent decays $H \rightarrow A_1 A_2$, $A_2 \rightarrow gg$, and $A_1 \rightarrow gg$, and the $Z$ boson decays leptonically to either $e$ or $\mu$</em>
 + <em><strong>Methods:</strong></em> <em>To be written</em>
 + <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
@@ -547,6 +606,21 @@ To be written
 
 
 
+##  **Quantum Autoencoders** [![Descriptions-quantum-autoencoders](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_QIS/CATEGORIES.md#quantum-autoencoders-)
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2112.04958"> Anomaly detection in high-energy physics using a quantum autoencoder</a> [<a href="https://doi.org/10.1103/PhysRevD.105.095004">DOI</a>] <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>Methods:</strong></em> <em>Quantum Autoencoders using Variational Quantum Circuits (VQC)</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
+
+
 ##  **Quantum Generative Adversarial Networks** [![Descriptions-quantum-generative-adversarial-networks](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_QIS/CATEGORIES.md#quantum-generative-adversarial-networks-)
 
 <details>
@@ -554,7 +628,7 @@ To be written
 
 + <em><strong>HEP Context:</strong></em> <em>Object reconstruction (tracking problem and thrust for jet clustering), signal-background discrimination, detector simulations, and Monte Carlo event generation</em>
 + <em><strong>Methods:</strong></em> <em>Amplitude amplification (generalization of Grover's algorithm), quantum annealing, hybrid quantum-classical neural networks, variational quantum circuits, quantum support vector machines, quantum convolutional neural networks, quantum variational autoencoders, and quantum generative models (quantum generative adversarial network and quantum circuit born machine)</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em><strong>In object reconstruction:</strong> ; <strong>In classification:</strong> the quantum implentation of the Combinatorial Kalman Filter based on amplitude amplification has a rigorous proof of quantum speedup, however; <strong>In detector simulations and Monte Carlo event generation:</strong> ; <strong>Challenges and prospects:</strong> </em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
 
@@ -564,7 +638,7 @@ To be written
 <summary> <a href="https://arxiv.org/abs/2110.06933"> Style-based quantum generative adversarial networks for Monte Carlo events</a> <code>Expand</code> </summary>
 
 + <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>To be written</em>
++ <em><strong>Methods:</strong></em> <em>Hybrid quantum-classical system, where the generator model is a Quantum Neural Network (QNN) and the discriminator model is a Classical Neural Network (CNN). </em>
 + <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
@@ -624,7 +698,18 @@ To be written
 
 + <em><strong>HEP Context:</strong></em> <em>Object reconstruction (tracking problem and thrust for jet clustering), signal-background discrimination, detector simulations, and Monte Carlo event generation</em>
 + <em><strong>Methods:</strong></em> <em>Amplitude amplification (generalization of Grover's algorithm), quantum annealing, hybrid quantum-classical neural networks, variational quantum circuits, quantum support vector machines, quantum convolutional neural networks, quantum variational autoencoders, and quantum generative models (quantum generative adversarial network and quantum circuit born machine)</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em><strong>In object reconstruction:</strong> ; <strong>In classification:</strong> the quantum implentation of the Combinatorial Kalman Filter based on amplitude amplification has a rigorous proof of quantum speedup, however; <strong>In detector simulations and Monte Carlo event generation:</strong> ; <strong>Challenges and prospects:</strong> </em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2203.03578"> Unsupervised Quantum Circuit Learning in High Energy Physics</a> <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>Methods:</strong></em> <em>Quantum Circuit Born Machines (QCBM)</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
 
@@ -639,7 +724,7 @@ To be written
 
 + <em><strong>HEP Context:</strong></em> <em>Object reconstruction (tracking problem and thrust for jet clustering), signal-background discrimination, detector simulations, and Monte Carlo event generation</em>
 + <em><strong>Methods:</strong></em> <em>Amplitude amplification (generalization of Grover's algorithm), quantum annealing, hybrid quantum-classical neural networks, variational quantum circuits, quantum support vector machines, quantum convolutional neural networks, quantum variational autoencoders, and quantum generative models (quantum generative adversarial network and quantum circuit born machine)</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em><strong>In object reconstruction:</strong> ; <strong>In classification:</strong> the quantum implentation of the Combinatorial Kalman Filter based on amplitude amplification has a rigorous proof of quantum speedup, however; <strong>In detector simulations and Monte Carlo event generation:</strong> ; <strong>Challenges and prospects:</strong> </em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
 
@@ -648,9 +733,9 @@ To be written
 <details>
 <summary> <a href="https://arxiv.org/abs/2106.08334"> Quantum-inspired event reconstruction with Tensor Networks: Matrix Product States</a> [<a href="https://doi.org/10.1007/JHEP08(2021)112">DOI</a>] <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>HEP Context:</strong></em> <em>Classify between top quark jets and QCD jets</em>
 + <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>Matrix Product States (MPS)</em>
 
 To be written
 
@@ -669,7 +754,44 @@ To be written
 
 
 
+##  **Tensor Networks** [![Descriptions-tensor-networks](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_QIS/CATEGORIES.md#tensor-networks-)
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2106.08334"> Quantum-inspired event reconstruction with Tensor Networks: Matrix Product States</a> [<a href="https://doi.org/10.1007/JHEP08(2021)112">DOI</a>] <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>Classify between top quark jets and QCD jets</em>
++ <em><strong>Methods:</strong></em> <em>To be written</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>Matrix Product States (MPS)</em>
+
+To be written
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2202.10471"> Classical versus Quantum: comparing Tensor Network-based Quantum Circuits on LHC data</a> <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>Methods:</strong></em> <em>To be written</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
+
+
 ##  **Quantum Simulations** [![Descriptions-quantum-simulations](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_QIS/CATEGORIES.md#quantum-simulations-)
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2204.03381"> Quantum Simulation for High Energy Physics</a> <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>Methods:</strong></em> <em>To be written</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
 
 <details>
 <summary> <a href="https://arxiv.org/abs/2102.05044"> Simulating Collider Physics on Quantum Computers Using Effective Field Theories</a> [<a href="https://doi.org/10.1103/PhysRevLett.127.212001">DOI</a>] <code>Expand</code> </summary>
@@ -720,54 +842,6 @@ To be written
 ##  **Quantum Sensors** [![Descriptions-quantum-sensors](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_QIS/CATEGORIES.md#quantum-sensors-)
 
 <details>
-<summary> <a href="https://arxiv.org/abs/2008.12231"> Searching for Dark Matter with a Superconducting Qubit</a> [<a href="https://doi.org/10.1103/PhysRevLett.126.141302">DOI</a>] <code>Expand</code> </summary>
-
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
-
-To be written
-
-</details>
-
-
-
-##  **Uncategorized by QIS - TEMPORARY**
-
-<details>
-<summary> <a href="https://arxiv.org/abs/2204.03381"> Quantum Simulation for High Energy Physics</a> <code>Expand</code> </summary>
-
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
-
-To be written
-
-</details>
-
-<details>
-<summary> <a href="https://arxiv.org/abs/2203.07091"> Snowmass White Paper: Quantum Computing Systems and Software for High-energy Physics Research</a> <code>Expand</code> </summary>
-
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
-
-To be written
-
-</details>
-
-<details>
-<summary> <a href="https://arxiv.org/abs/2203.07117"> Snowmass white paper: Quantum information in quantum field theory and quantum gravity</a> <code>Expand</code> </summary>
-
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
-
-To be written
-
-</details>
-
-<details>
 <summary> <a href="https://arxiv.org/abs/2203.14915"> New Horizons: Scalar and Vector Ultralight Dark Matter</a> <code>Expand</code> </summary>
 
 + <em><strong>HEP Context:</strong></em> <em>To be written</em>
@@ -790,22 +864,26 @@ To be written
 </details>
 
 <details>
-<summary> <a href="https://arxiv.org/abs/2104.11583"> Quantum speedup for track reconstruction in particle accelerators</a> [<a href="https://doi.org/10.1103/PhysRevD.105.076012">DOI</a>] <code>Expand</code> </summary>
+<summary> <a href="https://arxiv.org/abs/2008.12231"> Searching for Dark Matter with a Superconducting Qubit</a> [<a href="https://doi.org/10.1103/PhysRevLett.126.141302">DOI</a>] <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em>Track reconstruction</em>
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
 + <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>This paper identifies the four fundamental routines in local track reconstruction methods: seeding, track building, cleaning, and selection. </em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
 
 To be written
 
 </details>
 
-<details>
-<summary> <a href="https://arxiv.org/abs/2203.03578"> Unsupervised Quantum Circuit Learning in High Energy Physics</a> <code>Expand</code> </summary>
 
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>Quantum Circuit Born Machines (QCBM)</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+##  **Uncategorized by QIS - TEMPORARY**
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2104.11583"> Quantum speedup for track reconstruction in particle accelerators</a> [<a href="https://doi.org/10.1103/PhysRevD.105.076012">DOI</a>] <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>Track reconstruction</em>
++ <em><strong>Methods:</strong></em> <em>To be written</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>This paper identifies the four fundamental routines in local track reconstruction methods: seeding, track building, cleaning, and selection. </em>
 
 To be written
 
@@ -846,17 +924,6 @@ To be written
 
 <details>
 <summary> <a href="https://arxiv.org/abs/2107.01166"> Lattice renormalization of quantum simulations</a> [<a href="https://doi.org/10.1103/PhysRevD.104.094519">DOI</a>] <code>Expand</code> </summary>
-
-+ <em><strong>HEP Context:</strong></em> <em>To be written</em>
-+ <em><strong>Methods:</strong></em> <em>To be written</em>
-+ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
-
-To be written
-
-</details>
-
-<details>
-<summary> <a href="https://arxiv.org/abs/2202.10471"> Classical versus Quantum: comparing Tensor Network-based Quantum Circuits on LHC data</a> <code>Expand</code> </summary>
 
 + <em><strong>HEP Context:</strong></em> <em>To be written</em>
 + <em><strong>Methods:</strong></em> <em>To be written</em>
@@ -923,6 +990,28 @@ To be written
 
 <details>
 <summary> <a href="https://arxiv.org/abs/quant-ph/0510027"> Simulating lattice gauge theories on a quantum computer</a> [<a href="https://doi.org/10.1103/PhysRevA.73.022328">DOI</a>] <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>Methods:</strong></em> <em>To be written</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2105.08703"> Quantum algorithm for Feynman loop integrals</a> [<a href="https://doi.org/10.1007/JHEP05(2022)100">DOI</a>] <code>Expand</code> </summary>
+
++ <em><strong>HEP Context:</strong></em> <em>To be written</em>
++ <em><strong>Methods:</strong></em> <em>To be written</em>
++ <em><strong>Results and Conclusions:</strong></em> <em>To be written</em>
+
+To be written
+
+</details>
+
+<details>
+<summary> <a href="https://arxiv.org/abs/2106.03865"> Partonic collinear structure by quantum computing</a> [<a href="https://doi.org/10.1103/PhysRevD.105.L111502">DOI</a>] <code>Expand</code> </summary>
 
 + <em><strong>HEP Context:</strong></em> <em>To be written</em>
 + <em><strong>Methods:</strong></em> <em>To be written</em>
