@@ -60,10 +60,9 @@ OUTPUT_FILE_HEP.write("[![HEP_TO_MAIN](https://img.shields.io/badge/Link_to-Main
 
 OUTPUT_FILE_HEP.write("## **PDF Versions** \n")
 OUTPUT_FILE_HEP.write("[![HEP_LIST](https://img.shields.io/badge/Download_PDF-List-ffcce7)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_HEP/BYHEP_LIST.pdf) ⟵ PDF of list of references  \n")
-OUTPUT_FILE_HEP.write("[![HEP_BRIEF](https://img.shields.io/badge/Download_PDF-Brief-daf2dc)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_HEP/BYHEP_BRIEF.pdf) ⟵ PDF of references with short descriptions (HEP context, QIS methods, results and conclusions)  \n")
 OUTPUT_FILE_HEP.write("[![HEP_DETAIL](https://img.shields.io/badge/Download_PDF-Detail-81b7df)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_HEP/BYHEP_DETAIL.pdf) ⟵ PDF of references with detailed descriptions  \n")
 
-write_papers_to_md(OUTPUT_FILE_HEP, categories_hep, df, "HEP")
+write_papers_to_md(df, OUTPUT_FILE_HEP, categories_hep, categories_qis, "HEP", "QIS")
 OUTPUT_FILE_HEP.close()
 
 # ***** BY QIS MD -----------------------------------------------------------------------
@@ -74,26 +73,32 @@ OUTPUT_FILE_QIS.write("[![QIS_TO_MAIN](https://img.shields.io/badge/Link_to-Main
 
 OUTPUT_FILE_QIS.write("## **PDF Versions** \n")
 OUTPUT_FILE_QIS.write("[![QIS_LIST](https://img.shields.io/badge/Download_PDF-List-ffcce7)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_QIS/BYQIS_LIST.pdf) ⟵ PDF of list of references  \n")
-OUTPUT_FILE_QIS.write("[![QIS_BRIEF](https://img.shields.io/badge/Download_PDF-Brief-daf2dc)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_QIS/BYQIS_BRIEF.pdf) ⟵ PDF of references with short descriptions (HEP context, QIS methods, results and conclusions)  \n")
 OUTPUT_FILE_QIS.write("[![QIS_DETAIL](https://img.shields.io/badge/Download_PDF-Detail-81b7df)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_QIS/BYQIS_DETAIL.pdf) ⟵ PDF of references with detailed descriptions  \n")
 
-write_papers_to_md(OUTPUT_FILE_QIS, categories_qis, df, "QIS")
+write_papers_to_md(df, OUTPUT_FILE_QIS, categories_qis, categories_hep, "QIS", "HEP")
 OUTPUT_FILE_QIS.close()
 
 # ***** ------------------------------------------------------------------------------------
 # ***** LATEX FILES ------------------------------------------------------------------------
 # ***** ------------------------------------------------------------------------------------
 # Output LaTeX Files
+# OUTPUT_FILE_MAIN = open("HEPQIS_MAIN.tex","w")
 OUTPUT_FILE_HEP_LIST = open("BY_HEP/BYHEP_LIST.tex","w")
-OUTPUT_FILE_HEP_BRIEF = open("BY_HEP/BYHEP_BRIEF.tex","w")
 OUTPUT_FILE_HEP_DETAIL = open("BY_HEP/BYHEP_DETAIL.tex","w")
 
 OUTPUT_FILE_QIS_LIST = open("BY_QIS/BYQIS_LIST.tex","w")
-OUTPUT_FILE_QIS_BRIEF = open("BY_QIS/BYQIS_BRIEF.tex","w")
 OUTPUT_FILE_QIS_DETAIL = open("BY_QIS/BYQIS_DETAIL.tex","w")
 
+# ***** MAIN LATEX FILES -----------------------------------------------------------------------
+
+# OUTPUT_FILE_MAIN.close()
+
 # ***** BY HEP LATEX FILES -----------------------------------------------------------------------
-write_papers_to_tex(OUTPUT_FILE_HEP_LIST, OUTPUT_FILE_HEP_BRIEF, OUTPUT_FILE_HEP_DETAIL, categories_hep, df, df_csv_hep)
+write_papers_to_tex(df, OUTPUT_FILE_HEP_LIST, OUTPUT_FILE_HEP_DETAIL, categories_hep, categories_qis, "HEP", "QIS")
+OUTPUT_FILE_HEP_LIST.close()
+OUTPUT_FILE_HEP_DETAIL.close()
 
 # ***** BY QIS LATEX FILES -----------------------------------------------------------------------
-write_papers_to_tex(OUTPUT_FILE_QIS_LIST, OUTPUT_FILE_QIS_BRIEF, OUTPUT_FILE_QIS_DETAIL, categories_qis, df, df_csv_qis)
+write_papers_to_tex(df, OUTPUT_FILE_QIS_LIST, OUTPUT_FILE_QIS_DETAIL, categories_qis, categories_hep, "QIS", "HEP")
+OUTPUT_FILE_QIS_LIST.close()
+OUTPUT_FILE_QIS_DETAIL.close()

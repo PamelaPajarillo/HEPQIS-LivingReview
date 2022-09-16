@@ -24,9 +24,6 @@ To be written
 ## **Anomaly Detection** [![Papers-anomaly-detection](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#anomaly-detection-)
 To be written
 
-## **Supersymmetry** [![Papers-supersymmetry](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#supersymmetry-)
-To be written
-
 ## **Beyond the Standard Model** [![Papers-beyond-the-standard-model](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#beyond-the-standard-model-)
 To be written
 
@@ -41,6 +38,9 @@ To be written
 
 ## **Cosmology** [![Papers-cosmology](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#cosmology-)
 To be written
+
+## **Uncategorized by HEP - TEMPORARY** [![Papers-uncategorized-by-hep---temporary](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#uncategorized-by-hep---temporary-)
+Temporary Category
 
 
 

@@ -25,20 +25,16 @@ hepqis: make_hepqis.py
 
 hep:
 	$(call compile_latex,HEP,LIST)
-	$(call compile_latex,HEP,BRIEF)
 	$(call compile_latex,HEP,DETAIL)
 
 qis:
 	$(call compile_latex,QIS,LIST)
-	$(call compile_latex,QIS,BRIEF)
 	$(call compile_latex,QIS,DETAIL)
 
 copy_draft:
 	$(call backup,HEP,LIST,$(date))
-	$(call backup,HEP,BRIEF,$(date))
 	$(call backup,HEP,DETAIL,$(date))
 	$(call backup,QIS,LIST,$(date))
-	$(call backup,QIS,BRIEF,$(date))
 	$(call backup,QIS,DETAIL,$(date))
 	
 clean:
