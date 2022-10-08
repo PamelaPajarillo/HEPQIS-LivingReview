@@ -3,7 +3,7 @@ Reviews,"The references below are (static) reviews in applications of quantum in
 Whitepapers,"The references below are whitepapers in applications of quantum information science to particle physics. Note that these references are from the Snowmass Community Planning Exercises."
 Jet Algorithms and Jet Tagging,"To be written"
 Track Reconstruction,"Given a set of signals, known as hits, from a detector's multiple layers of sensors, the goal is to cluster them into a collection of hits that come from the same particle. Each collision may produce a few thousand hits, making track reconstruction computationally demanding. "
-Event Generation,"To be written"
+Event Generation,"Event generators are programs that generate simulated events produced in collider experiments. In hadronic collisions, an event is composed of the following: \begin{enumerate} \item Incoming hadrons \item Hard part of the process \item Radiation \item Underlying event \item Hadronization \end{enumerate}"
 Detector Simulation,"To be written"
 Signal-Background Discrimination,"To be written"
 Anomaly Detection,"To be written"

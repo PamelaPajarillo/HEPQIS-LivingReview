@@ -1,6 +1,6 @@
 #  **Descriptions of HEP Topics**
 
-**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to the [PDF version found here](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_HEP/BYHEP_DETAIL.pdf) ⚠️⚠️⚠️**
+**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to Section 1.1 in the [PDF version found here](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/HEPQIS.pdf) ⚠️⚠️⚠️**
 
 [![HEPCAT_TO_HEP](https://img.shields.io/badge/Link_to-HEP_-5BC0EB)](/BY_HEP#readme) ⟵ Click the following for the living review organized by HEP topics  
 [![HEPCAT_TO_QIS](https://img.shields.io/badge/Link_to-QIS_-9BC53D)](/BY_QIS#readme) ⟵ Click the following for the living review organized by QIS topics  
@@ -13,7 +13,7 @@ To be written
 Given a set of signals, known as hits, from a detector's multiple layers of sensors, the goal is to cluster them into a collection of hits that come from the same particle. Each collision may produce a few thousand hits, making track reconstruction computationally demanding. 
 
 ## **Event Generation** [![Papers-event-generation](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#event-generation-)
-To be written
+Event generators are programs that generate simulated events produced in collider experiments. In hadronic collisions, an event is composed of the following: \begin{enumerate} \item Incoming hadrons \item Hard part of the process \item Radiation \item Underlying event \item Hadronization \end{enumerate}
 
 ## **Detector Simulation** [![Papers-detector-simulation](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#detector-simulation-)
 To be written

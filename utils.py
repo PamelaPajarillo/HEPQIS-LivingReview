@@ -105,8 +105,8 @@ def write_papers_to_md(df, output_file, categories_main, categories_sub, main_ty
         # Print Title of Main Category
         if (main_category != 'Reviews') and (main_category != 'Whitepapers'):
             output_file.write("##  **%s** [![Descriptions-%s](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_%s/CATEGORIES.md#%s-)\n\n" % (main_category, main_category.replace(" ", "-").lower(), main_type, main_category.replace(" ", "-").lower()))
-        else:
-            output_file.write("##  **%s**\n\n" % (main_category))
+        elif (main_category == 'Reviews'):
+            output_file.write("## **Reviews and Whitepapers**\n\n")
 
         # Retrieve papers by checking for substring in categories
         df_main = df.loc[df['%s_Primary' % main_type].str.contains(main_category, case=False)]
@@ -143,19 +143,37 @@ def write_papers_to_md(df, output_file, categories_main, categories_sub, main_ty
                     
                     # Write brief description and summary of paper
                     output_file.write("\n\n+ <em><strong>HEP Context:</strong></em> <em>%s</em>\n+ <em><strong>Methods:</strong></em> <em>%s</em>\n+ <em><strong>Results and Conclusions:</strong></em> <em>%s</em>" % (paper[6].strip('\"'), paper[7].strip('\"'), paper[8].strip('\"')))
-                    output_file.write("\n\n%s\n\n" % paper[3].strip('\"'))
                     output_file.write("</details>\n\n")
                 
                 output_file.write("\n\n")
 
-def write_papers_to_tex(df, list_file, detail_file, categories_main, categories_sub, main_type, sub_type):
+def write_categories_to_tex(OUTPUT_FILE_MAIN, subcategories, df_csv, run_type):
+    if run_type == 'HEP':
+        OUTPUT_FILE_MAIN.write("\subsection{High Energy Physics Categories}  \n")
+    elif run_type == 'QIS':
+        OUTPUT_FILE_MAIN.write("\subsection{Quantum Information Science Categories}  \n")
+    
+    for category in subcategories:
+        if (category != 'Reviews') and (category != 'Whitepapers'):
+            OUTPUT_FILE_MAIN.write("\subsubsection{%s}  \n" % (category))
+            OUTPUT_FILE_MAIN.write("%s\n\n" % df_csv.loc[df_csv['Category'] == category]['Description'].values[0])
+
+    OUTPUT_FILE_MAIN.write("\n\n")
+
+def write_papers_to_tex(df, file, categories_main, categories_sub, main_type, sub_type):
     # Get Categories and Subcategories
+    if main_type == 'HEP':
+        file.write("\section{High Energy Physics in Quantum Information Science}\n\n")
+    elif main_type == 'QIS':
+        file.write("\section{Quantum Information Science in High Energy Physics}\n\n")
+    
     for main_category in categories_main:
         # Print Title of Main Category
         if (main_category != 'Reviews') and (main_category != 'Whitepapers'):
-            list_file.write("\section{%s}\n\n" % main_category)
-            detail_file.write("\section{%s}\n\n" % main_category)
-        
+            file.write("\subsection{%s}\n\n" % main_category)
+        elif (main_category == 'Reviews'):
+            file.write("\subsection{Reviews and Whitepapers}\n\n")
+
         # Retrieve papers by checking for substring in categories
         df_main = df.loc[df['%s_Primary' % main_type].str.contains(main_category, case=False)]
         
@@ -167,17 +185,12 @@ def write_papers_to_tex(df, list_file, detail_file, categories_main, categories_
 
             if len(papers) > 0:
                 
-                list_file.write("\subsection{%s}\n\n" % sub_category)
-                detail_file.write("\subsection{%s}\n\n" % sub_category)
+                file.write("\subsubsection{%s}\n\n" % sub_category)
 
                 # Formatting and write to file
-                list_file.write("\\begin{itemize}\n")
                 for paper in papers:
-                    list_file.write("   \item %s~\cite{%s}\n" % (paper[1], paper[0]))
-                    detail_file.write("\subsubsection{%s~\cite{%s}}\n" % (paper[1], paper[0]))
-                    detail_file.write("\\begin{itemize}\n\t\item \\textbf{HEP Context: }%s\n\t\item \\textbf{Methods: }%s\n\t\item \\textbf{Results and Conclusions: }%s\n\end{itemize}" % (paper[6], paper[7], paper[8]))
+                    file.write("\paragraph{%s~\cite{%s}}\n" % (paper[1], paper[0]))
+                    file.write("\\begin{itemize}\n\t\item \\textbf{HEP Context: }%s\n\t\item \\textbf{Methods: }%s\n\t\item \\textbf{Results and Conclusions: }%s\n\end{itemize}" % (paper[6], paper[7], paper[8]))
             
-                list_file.write("\end{itemize}\n")
-                list_file.write("\n\n")
-                detail_file.write("\n\n")
+                file.write("\n\n")
 

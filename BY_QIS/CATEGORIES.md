@@ -1,6 +1,6 @@
 #  **Descriptions of QIS Topics**
 
-**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to the [PDF version found here](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/BY_QIS/BYQIS_DETAIL.pdf) ⚠️⚠️⚠️**
+**⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to Section 1.2 in the [PDF version found here](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/HEPQIS.pdf) ⚠️⚠️⚠️**
 
 [![QISCAT_TO_HEP](https://img.shields.io/badge/Link_to-HEP_-5BC0EB)](/BY_HEP#readme) ⟵ Click the following for the living review organized by HEP topics  
 [![QISCAT_TO_QIS](https://img.shields.io/badge/Link_to-QIS_-9BC53D)](/BY_QIS#readme) ⟵ Click the following for the living review organized by QIS topics  
@@ -19,19 +19,20 @@ To be written
 To be written
 
 ## **Algorithms Based on Amplitude Amplification** [![Papers-algorithms-based-on-amplitude-amplification](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_QIS/README.md#algorithms-based-on-amplitude-amplification-)
-Amplitude amplification is a quantum algorithm which is a generalization of Grover's search algorithm. Grover's search algorithm is a quantum algorithm that solves the problem of finding a desired element in an unstructured list of $N$ elements in roughly $\sqrt(N)$ steps. 
+Amplitude amplification is a quantum algorithm which is a generalization of Grover's search algorithm. Grover's search algorithm is a quantum algorithm that solves the problem of finding a desired element in an unstructured list of $N$ elements in roughly $\sqrt{N}$ steps.
 
 ## **Quantum Walks** [![Papers-quantum-walks](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_QIS/README.md#quantum-walks-)
-To be written
+A random walk is a random process that describes a path that consists of a sequence of steps that are determined randomly. An example of a one dimensional discrete random walk is a random walk on the integer number line starting at $0$, and each step moves $+1$ or $-1$ with an equal probability, which analogous to flipping a coin then, depending on the outcome, move forward or backwards on the number line. This can be described as a Markov chain, a sequence of random variables with the property that the probability of moving to the next step only depends on the current step and not the previous step, i.e. $p(X_{n+1} = x | X_1 = x_1, X_2 = x_2, \ldots) = p(X_{n+1} = x | X_n = x_n)$. This can be extended to higher dimensions. An example of a continuous random walk is Brownian motion, the random motion of particles in a medium. \\\\ The quantum discrete random walk defines the movement of a walker in position basis, $\mathcal{H}_P = \{ |i \rangle : i \in \mathbb{Z} \}$, controlled by the coin in the spin-$\frac{1}{2}$ basis, $\mathcal{H}_C = \{| \uparrow \rangle, | \downarrow \rangle\}$. The translation of the walker can be represented by the unitary operator $T = \sum | i + 1 \rangle \langle i | \otimes | \uparrow \rangle \langle \uparrow | + \sum | i -1 \rangle \langle i | \otimes | \downarrow \rangle \langle \downarrow | $, where the index $i$ runs over $\mathcal{Z}$. Therefore, 
+$T |i \rangle | \uparrow \rangle = | i + 1 \rangle | \uparrow \rangle$ and $T |i \rangle | \downarrow \rangle = | i - 1 \rangle | \downarrow \rangle$. A single step of the random walk is constructed from a coin flip unitary operation $C$ and the translation operator, $T$. Therefore, a single step can be represented as a unitary operator $U = T \cdot (C \otimes \mathbb{I})$. An $N$-step quantum walk is defined by $U^N$. In the quantum random walk, the coin register is not measured during each step. This introduces interference, which is drastically different from the classical random walk.
 
 ## **Continuous Variable Quantum Computing** [![Papers-continuous-variable-quantum-computing](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_QIS/README.md#continuous-variable-quantum-computing-)
-To be written
+Continuous variable quantum computing is a quantum computing paradigm that uses a large number of modes of the harmonic oscillator, which can be represented as $| \psi \rangle = \int \,dx\, \psi(x) | x \rangle $, whereas discrete variable quantum computing uses discrete number of quantum bits, for example, a qubit can be represented as $\psi \rangle = c_0 | 0 \rangle + c_1 | 1 \rangle$.
 
 ## **Quantum Autoencoders** [![Papers-quantum-autoencoders](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_QIS/README.md#quantum-autoencoders-)
 To be written
 
 ## **Quantum Generative Adversarial Networks** [![Papers-quantum-generative-adversarial-networks](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_QIS/README.md#quantum-generative-adversarial-networks-)
-The implementation of a classical model involves three main components: (1) generator model, which produces artificial data; (2) discriminator model, which tries to classify the data as either real or generated; (3) adversarial training procedure, which . 
+The implementation of a classical model involves two main components: (1) generator model, which produces artificial data; (2) discriminator model, which tries to classify the data as either real or generated. 
 
 ## **Quantum Circuit Born Machines** [![Papers-quantum-circuit-born-machines](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_QIS/README.md#quantum-circuit-born-machines-)
 To be written

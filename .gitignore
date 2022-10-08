@@ -7,6 +7,7 @@ __pycache__
 DRAFTS/*.pdf
 DRAFTS/
 TODO*
+TEMPLATE.tex
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
