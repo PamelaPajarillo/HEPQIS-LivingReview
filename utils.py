@@ -71,8 +71,22 @@ def get_dataframe(bib_file, csv_file, categories_hep, categories_qis):
     df["QIS_Primary"] = df["QIS_Categories"].apply(lambda x: sort_categories(x, primary = True))
     df["QIS_Secondary"] = df["QIS_Categories"].apply(lambda x: sort_categories(x, primary = False))
 
+    # Fix author format
+    def fix_author_format(author_str):
+        author_list = author_str.split(' and ')
+        formatted_author_list = []
+        for author in author_list:
+            if ',' in author:
+                formatted_author_list.append(author.split(',')[1].strip() + ' ' + author.split(',')[0].strip())
+            elif 'others' in author:
+                formatted_author_list.append("et al.")        
+        fixed_author = ', '.join(formatted_author_list)
+        fixed_author = fixed_author.replace(', et al.', ' et al.')
+        return fixed_author
+    
+    df["authors"] = df["author"].apply(lambda x: fix_author_format(x))
     # Compress dataframe with useful information
-    df = df[["ID", "title", "HEP_Categories", "QIS_Categories", "eprint_url", "doi_url", "HEP_Context", "Methods", "Results_and_Conclusions","HEP_Primary", "HEP_Secondary", "QIS_Primary", "QIS_Secondary"]]
+    df = df[["ID", "title", "authors", "HEP_Categories", "QIS_Categories", "eprint_url", "doi_url", "HEP_Context", "Methods", "Results_and_Conclusions","HEP_Primary", "HEP_Secondary", "QIS_Primary", "QIS_Secondary"]]
 
     return df
 
@@ -97,7 +111,7 @@ def list_subcategories_to_md(OUTPUT_FILE_MAIN, OUTPUT_FILE_RUN, subcategories, d
 def write_papers_to_md(df, output_file, categories_main, categories_sub, main_type, sub_type):
 
     # Indices of table to check for LaTeX formatting and change to Markdown
-    text_check = [6, 7, 8]
+    text_check = [7, 8, 9]
 
     # Get Categories
     for main_category in categories_main:
@@ -128,12 +142,25 @@ def write_papers_to_md(df, output_file, categories_main, categories_sub, main_ty
                 for paper in papers:
 
                     output_file.write("<details>\n")
-                    if (paper[4] is not None) and (paper[5] is not None):
-                        output_file.write("<summary> <a href=\"%s\"> %s</a> [<a href=\"%s\">DOI</a>] <code>Expand</code> </summary>" % (paper[4], paper[1], paper[5]))
-                    elif paper[4] is not None:
-                        output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code> </summary>" % (paper[4], paper[1]))
+
+                    # Fix Author Names with Special Characters
+                    paper[2] = re.sub(r"\\~a", r"ã", paper[2])
+                    paper[2] = re.sub(r"\\'a", r"á", paper[2])
+                    paper[2] = re.sub(r"\\'e", r"é", paper[2])
+                    paper[2] = re.sub(r"\\`e", r"è", paper[2])
+                    paper[2] = re.sub(r"\\'\\i\{\}", r"í", paper[2])
+                    paper[2] = re.sub(r"\\\"o", r"ö", paper[2])
+                    paper[2] = re.sub(r"\\\'o", r"ó", paper[2])
+                    paper[2] = re.sub(r"\\~n", r"ñ", paper[2])
+                    paper[2] = re.sub(r"\\\"u", r"ü", paper[2])
+                    paper[2] = re.sub(r"\\\'u", r"ú", paper[2])
+
+                    if (paper[5] is not None) and (paper[6] is not None):
+                        output_file.write("<summary> <a href=\"%s\"> %s</a> [<a href=\"%s\">DOI</a>] <code>Expand</code><br><em>%s</em> </summary>" % (paper[5], paper[1], paper[6], paper[2]))
                     elif paper[5] is not None:
-                        output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code> </summary>" % (paper[5], paper[1]))
+                        output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code><br><em>%s</em> </summary>" % (paper[5], paper[1], paper[2]))
+                    elif paper[6] is not None:
+                        output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code><br><em>%s</em> </summary>" % (paper[6], paper[1], paper[2]))
 
                     # Reformat LaTeX to Markdown
                     for i in text_check:
@@ -142,7 +169,7 @@ def write_papers_to_md(df, output_file, categories_main, categories_sub, main_ty
                         paper[i] = re.sub(r"(\\underline{)(.*?)\}", r"<u>\2</u>", paper[i])
                     
                     # Write brief description and summary of paper
-                    output_file.write("\n\n+ <em><strong>HEP Context:</strong></em> <em>%s</em>\n+ <em><strong>Methods:</strong></em> <em>%s</em>\n+ <em><strong>Results and Conclusions:</strong></em> <em>%s</em>" % (paper[6].strip('\"'), paper[7].strip('\"'), paper[8].strip('\"')))
+                    output_file.write("\n\n+ <em><strong>HEP Context:</strong></em> <em>%s</em>\n+ <em><strong>Methods:</strong></em> <em>%s</em>\n+ <em><strong>Results and Conclusions:</strong></em> <em>%s</em>" % (paper[7].strip('\"'), paper[8].strip('\"'), paper[9].strip('\"')))
                     output_file.write("</details>\n\n")
                 
                 output_file.write("\n\n")
@@ -189,8 +216,9 @@ def write_papers_to_tex(df, file, categories_main, categories_sub, main_type, su
 
                 # Formatting and write to file
                 for paper in papers:
+
                     file.write("\paragraph{%s~\cite{%s}}\n" % (paper[1], paper[0]))
-                    file.write("\\begin{itemize}\n\t\item \\textbf{HEP Context: }%s\n\t\item \\textbf{Methods: }%s\n\t\item \\textbf{Results and Conclusions: }%s\n\end{itemize}" % (paper[6], paper[7], paper[8]))
+                    file.write("\\textit{%s} \n\n \\begin{itemize}\n\t\item \\textbf{HEP Context: }%s\n\t\item \\textbf{Methods: }%s\n\t\item \\textbf{Results and Conclusions: }%s\n\end{itemize}" % (paper[2], paper[7], paper[8], paper[9]))
             
                 file.write("\n\n")
 
