@@ -80,6 +80,7 @@ OUTPUT_FILE_QIS.close()
 # Output LaTeX Files
 OUTPUT_FILE_CATEGORIES = open("INTRODUCTION.tex","w")
 OUTPUT_FILE_CATEGORIES.write('\section{Introduction}\n\n')
+OUTPUT_FILE_CATEGORIES.write('The purpose of this note is to collect references for quantum information science as applied to particle and nuclear physics.  The papers listed are in no particular order.  In order to be as useful as possible, this document will continually change. Please check back \\footnote[2]{See \href{https://github.com/PamelaPajarillo/HEPQIS-LivingReview}{https://github.com/PamelaPajarillo/HEPQIS-LivingReview}.} regularly.  You can simply download the .bib file to get all of the latest references.  Suggestions are most welcome.')
 OUTPUT_FILE_HEP = open("BYHEP.tex","w")
 OUTPUT_FILE_QIS = open("BYQIS.tex","w")
 

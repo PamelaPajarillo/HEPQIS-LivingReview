@@ -24,7 +24,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip setuptools wheel pandas bibtexparser 
+        python -m pip install --upgrade pip setuptools wheel pandas bibtexparser requests datetime
         python -m pip list
 
     - name: Test README generation

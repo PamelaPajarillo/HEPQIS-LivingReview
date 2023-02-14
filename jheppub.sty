@@ -19,16 +19,24 @@
 \ProvidesPackage{jheppub}[2013/03/21 r534]
 
 
-\gdef\@fpheader{ }
+\gdef\@fpheader{}
 \gdef\@journal{jhep}
+
+\newif\ifnotoc\notocfalse
+\newif\ifemailadd\emailaddfalse
+\newif\iftoccontinuous\toccontinuousfalse
+\newif\ifnatbibsort\natbibsorttrue
+
+\DeclareOption{no-natbib-sort}{\natbibsortfalse}
+\ProcessOptions\relax
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{epsfig}
 \RequirePackage{graphicx}
-\RequirePackage[numbers,sort&compress]{natbib}
+\ifnatbibsort\RequirePackage[numbers,sort&compress]{natbib}\else\RequirePackage[numbers,compress]{natbib}\fi
 \RequirePackage{color}
-\RequirePackage[pagebackref=true,colorlinks=true
+\RequirePackage[colorlinks=true
 ,urlcolor=blue
 ,anchorcolor=blue
 ,citecolor=blue
@@ -40,10 +48,6 @@
 ,pdfproducer=medialab
 ,pdfa=true
 ]{hyperref}
-
-\newif\ifnotoc\notocfalse
-\newif\ifemailadd\emailaddfalse
-\newif\iftoccontinuous\toccontinuousfalse
 
 \def\@subheader{\@empty}
 \def\@keywords{\@empty}
@@ -190,7 +194,7 @@
 %% they can be linked with an 'and'
 \fi
 % Author
-{\raggedright\sffamily\the\auth@toks\par}
+{\bfseries\raggedright\sffamily\the\auth@toks\par}
 \afterAuthorSpace
 % Affiliation
 \ifaffil\begin{list}{}{%
@@ -226,10 +230,10 @@
 %
 \ifnotoc\else
 \iftoccontinuous\else\newpage\fi
-%\beforetochook\hrule
-%\tableofcontents
+\beforetochook\hrule
+\tableofcontents
 \afterTocSpace
-%\hrule
+\hrule
 \afterTocRuleSpace
 \fi
 \setcounter{footnote}{0}

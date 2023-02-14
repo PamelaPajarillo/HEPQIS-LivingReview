@@ -2,6 +2,36 @@ import sys
 import re
 import pandas as pd
 import bibtexparser
+import requests
+from datetime import date
+
+def get_inspirehep_date(arxiv, doi):
+    url = ''
+    if arxiv != 'nan':
+        url = 'https://labs.inspirehep.net/api/arxiv/'+arxiv
+    else:
+        url = 'https://labs.inspirehep.net/api/doi/'+doi
+    
+    r = requests.get(url)
+    if 'metadata' in r.json():
+        metadata = r.json()['metadata']
+        if arxiv != 'nan':
+            return metadata['preprint_date']
+        else:
+            return metadata['imprints'][0]['date']
+    
+def format_date(inspirehep_date, arxiv):
+    date_vec = inspirehep_date.split("-")
+    if len(date_vec) == 3:
+        if arxiv != 'nan':
+            return "Published on arXiv: " + date(int(date_vec[0]), int(date_vec[1]), int(date_vec[2])).strftime("%d %B %Y") 
+        else:
+            return "Published in Journal: " + date(int(date_vec[0]), int(date_vec[1]), int(date_vec[2])).strftime("%d %B %Y")
+    else:
+        if arxiv != 'nan':
+            return "Published on arXiv: " + date(int(date_vec[0]), int(date_vec[1]), 1).strftime("%B %Y") 
+        else:
+            return "Published in Journal: " + date(int(date_vec[0]), int(date_vec[1]), 1).strftime("%B %Y")
 
 def get_dataframe(bib_file, csv_file, categories_hep, categories_qis):
 
@@ -29,18 +59,32 @@ def get_dataframe(bib_file, csv_file, categories_hep, categories_qis):
         print(check_csv[['ID']])
         sys.exit(1)
 
-    # Check to make sure each paper has at least one HEP category and at least one QIS category
+    # Check to make sure each paper's categories are valid
+    def check_categories(categories, category_list):
+        for category in categories.split('\'')[1::2]:
+            if category not in category_list:
+                return False
+        return True
+    
+    # Check to make sure each paper has at least one valid HEP category and at least one valid QIS category
+    exit_condition = False
     df["HEP_Check"] = df["HEP_Categories"].str.contains('|'.join(categories_hep), case=False)
     df["QIS_Check"] = df["QIS_Categories"].str.contains('|'.join(categories_qis), case=False)
-    check_hep = df[~df["HEP_Check"]]
-    check_qis = df[~df["QIS_Check"]]
+    df["HEP_Category_Check"] = df["HEP_Categories"].apply(lambda x: check_categories(x, categories_hep))
+    df["QIS_Category_Check"] = df["QIS_Categories"].apply(lambda x: check_categories(x, categories_qis))
+    check_hep = df[~df["HEP_Check"] | ~df["HEP_Category_Check"]]
+    check_qis = df[~df["QIS_Check"]| ~df["QIS_Category_Check"]]
     if len(check_hep) > 0:
-        print("The following papers do not have at least one HEP category:")
-        print(check_hep[[['ID']]])
-        sys.exit(1)
+        print("The following papers have invalid HEP categories:")
+        print(check_hep[['ID']])
+        exit_condition = True
     if len(check_qis) > 0:
-        print("The following papers do not have at least one QIS category:")
-        print(check_qis[[['ID']]])
+        print("The following papers have invalid QIS categories:")
+        print(check_qis[['ID']])
+        exit_condition = True
+
+    # Stop if there are any invalid categories
+    if exit_condition:
         sys.exit(1)
 
     # Check and Make URLs 
@@ -58,7 +102,7 @@ def get_dataframe(bib_file, csv_file, categories_hep, categories_qis):
     df["doi_check"] = df["doi"].isnull()
     df["eprint_url"] = df.apply(lambda x: fetch_eprint_url(x.eprint, x.eprint_check), axis = 1)
     df["doi_url"] = df.apply(lambda x: fetch_doi_url(x.doi, x.doi_check), axis = 1)
-
+    
     # Parse out primary category and secondary categories
     def sort_categories(categories, primary = False):
         if primary:
@@ -85,9 +129,15 @@ def get_dataframe(bib_file, csv_file, categories_hep, categories_qis):
         return fixed_author
     
     df["authors"] = df["author"].apply(lambda x: fix_author_format(x))
+    
+    # Sort by Dates
+    df["InspireHEP_Date"] = df.apply(lambda x: get_inspirehep_date(str(x['eprint']), str(x['doi'])), axis=1)
+    df["Date"] = df.apply(lambda x: format_date(str(x['InspireHEP_Date']), str(x['eprint'])), axis=1)
+    df["InspireHEP_Date"] = pd.to_datetime(df['InspireHEP_Date'])
+    df.sort_values(by='InspireHEP_Date', ascending=False, inplace=True)
+    
     # Compress dataframe with useful information
-    df = df[["ID", "title", "authors", "HEP_Categories", "QIS_Categories", "eprint_url", "doi_url", "HEP_Context", "Methods", "Results_and_Conclusions","HEP_Primary", "HEP_Secondary", "QIS_Primary", "QIS_Secondary"]]
-
+    df = df[["ID", "title", "authors", "HEP_Categories", "QIS_Categories", "eprint_url", "doi_url", "HEP_Context", "Methods", "Results_and_Conclusions","HEP_Primary", "HEP_Secondary", "QIS_Primary", "QIS_Secondary", "Date"]]
     return df
 
 def get_categories(csv_file):
@@ -156,11 +206,11 @@ def write_papers_to_md(df, output_file, categories_main, categories_sub, main_ty
                     paper[2] = re.sub(r"\\\'u", r"ú", paper[2])
 
                     if (paper[5] is not None) and (paper[6] is not None):
-                        output_file.write("<summary> <a href=\"%s\"> %s</a> [<a href=\"%s\">DOI</a>] <code>Expand</code><br><em>%s</em> </summary>" % (paper[5], paper[1], paper[6], paper[2]))
+                        output_file.write("<summary> <a href=\"%s\"> %s</a> [<a href=\"%s\">DOI</a>] <code>Expand</code><br><em> Authors: %s<br>%s</em> </summary>" % (paper[5], paper[1], paper[6], paper[2], paper[14]))
                     elif paper[5] is not None:
-                        output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code><br><em>%s</em> </summary>" % (paper[5], paper[1], paper[2]))
+                        output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code><br><em> Authors: %s<br>%s</em> </summary>" % (paper[5], paper[1], paper[2], paper[14]))
                     elif paper[6] is not None:
-                        output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code><br><em>%s</em> </summary>" % (paper[6], paper[1], paper[2]))
+                        output_file.write("<summary> <a href=\"%s\"> %s</a> <code>Expand</code><br><em> Authors: %s<br>%s</em> </summary>" % (paper[6], paper[1], paper[2], paper[14]))
 
                     # Reformat LaTeX to Markdown
                     for i in text_check:
@@ -217,8 +267,8 @@ def write_papers_to_tex(df, file, categories_main, categories_sub, main_type, su
                 # Formatting and write to file
                 for paper in papers:
 
-                    file.write("\paragraph{%s~\cite{%s}}\n" % (paper[1], paper[0]))
-                    file.write("\\textit{%s} \n\n \\begin{itemize}\n\t\item \\textbf{HEP Context: }%s\n\t\item \\textbf{Methods: }%s\n\t\item \\textbf{Results and Conclusions: }%s\n\end{itemize}" % (paper[2], paper[7], paper[8], paper[9]))
+                    file.write("\paragraph{%s~\cite{%s}}\n\n" % (paper[1], paper[0]))
+                    file.write("\\textit{Authors: %s; %s} \n\n\\begin{itemize}\n\t\item \\textbf{HEP Context: }%s\n\t\item \\textbf{Methods: }%s\n\t\item \\textbf{Results and Conclusions: }%s\n\end{itemize}" % (paper[2], paper[14], paper[7], paper[8], paper[9]))
             
                 file.write("\n\n")
 

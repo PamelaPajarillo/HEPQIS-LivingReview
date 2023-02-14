@@ -16,6 +16,7 @@ realclean: clean
 
 main:
 	latexmk -lualatex -logfilewarnings -halt-on-error HEPQIS
+	mkdir -p DRAFTS
 	rsync HEPQIS.pdf DRAFTS/draft_$(date).pdf
 
 final:
