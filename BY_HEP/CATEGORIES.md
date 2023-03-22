@@ -2,9 +2,9 @@
 
 **⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to Section 1.1 in the [PDF version found here](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/HEPQIS.pdf) ⚠️⚠️⚠️**
 
-[![HEPCAT_TO_HEP](https://img.shields.io/badge/Link_to-HEP_-5BC0EB)](/BY_HEP#readme) ⟵ Click the following for the living review organized by HEP topics  
-[![HEPCAT_TO_QIS](https://img.shields.io/badge/Link_to-QIS_-9BC53D)](/BY_QIS#readme) ⟵ Click the following for the living review organized by QIS topics  
-[![HEPCAT_TO_MAIN](https://img.shields.io/badge/Link_to-Main-FDE74C)](/../../#readme) ⟵ Click the following to go to the main living review page  
+[![HEPCAT_TO_HEP](https://img.shields.io/badge/Link_to-Living_Review_by_HEP_-5BC0EB)](/BY_HEP#readme) 	
+[![HEPCAT_TO_QIS](https://img.shields.io/badge/Link_to-Living_Review_by_QIS_-9BC53D)](/BY_QIS#readme) 	
+[![HEPCAT_TO_MAIN](https://img.shields.io/badge/Link_to-Living_Review_Home_-FDE74C)](/../../#readme) 
 
 ## **Anomaly Detection** [![Papers-anomaly-detection](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_HEP/README.md#anomaly-detection-)
 One of the main goals of high energy physics is to search for Beyond the Standard Model (BSM) physics. The most common strategy in BSM searches is to pick a specific BSM signal model and estimate the background from Standard Model (SM) processes. The signal events are then combined with the background events to develop an analysis strategy to be appled on real data. This strategy is strongly model-dependent. 

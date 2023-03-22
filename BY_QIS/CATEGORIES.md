@@ -2,9 +2,9 @@
 
 **⚠️⚠️⚠️ Warning! LaTeX formatting in GitHub (used in the descriptions) is not functioning properly. Please refer to Section 1.2 in the [PDF version found here](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/PamelaPajarillo/HEPQIS-LivingReview/main/HEPQIS.pdf) ⚠️⚠️⚠️**
 
-[![QISCAT_TO_HEP](https://img.shields.io/badge/Link_to-HEP_-5BC0EB)](/BY_HEP#readme) ⟵ Click the following for the living review organized by HEP topics  
-[![QISCAT_TO_QIS](https://img.shields.io/badge/Link_to-QIS_-9BC53D)](/BY_QIS#readme) ⟵ Click the following for the living review organized by QIS topics  
-[![QISCAT_TO_MAIN](https://img.shields.io/badge/Link_to-Main-FDE74C)](/../../#readme) ⟵ Click the following to go to the main living review page  
+[![QISCAT_TO_HEP](https://img.shields.io/badge/Link_to-Living_Review_by_HEP_-5BC0EB)](/BY_HEP#readme) 	
+[![QISCAT_TO_QIS](https://img.shields.io/badge/Link_to-Living_Review_by_QIS_-9BC53D)](/BY_QIS#readme) 	
+[![QISCAT_TO_MAIN](https://img.shields.io/badge/Link_to-Living_Review_Home_-FDE74C)](/../../#readme) 
 
 ## **Continuous Variable Quantum Computing** [![Papers-continuous-variable-quantum-computing](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_QIS/README.md#continuous-variable-quantum-computing-)
 Continuous variable quantum computing is a quantum computing paradigm that uses a large number of modes of the harmonic oscillator, which can be represented as $\ket{\psi} = \int \,dx\, \psi(x) \ket{x} $, whereas discrete variable quantum computing uses discrete number of quantum bits, for example, a qubit can be represented as $\ket{\psi} = c_0 \ket{0} + c_1 \ket{1}$.
