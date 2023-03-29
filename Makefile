@@ -1,4 +1,4 @@
-FILENAME = HEPML
+FILENAME = HEPQIS
 
 date = $(shell date +%Y-%m-%d)
 output_file = draft_$(date).pdf

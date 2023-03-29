@@ -279,3 +279,10 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+DEBUG.ipynb
+TODO.bib
+TODO.csv
+utils.pyc
+__pycache__/utils.cpython-38.pyc
+__pycache__/utils.cpython-38.pyc.139760486433296
+.vscode/settings.json

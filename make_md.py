@@ -4,16 +4,16 @@ import requests
 
 update_journal = False
 
-myfile = open("HEPML.tex")
+myfile = open("HEPQIS.tex")
 myfile_out = open("README.md","w")
 
-myfile_out.write("#  **A Living Review of Machine Learning for Particle Physics**\n\n")
+myfile_out.write("#  **A Living Review of Quantum Information Science in Particle Physics**\n\n")
 
-myfile_out.write("*Modern machine learning techniques, including deep learning, is rapidly being applied, adapted, and developed for high energy physics.  The goal of this document is to provide a nearly comprehensive list of citations for those developing and applying these approaches to experimental, phenomenological, or theoretical analyses.  As a living document, it will be updated as often as possible to incorporate the latest developments.  A list of proper (unchanging) reviews can be found within.  Papers are grouped into a small set of topics to be as useful as possible.  Suggestions are most welcome.*\n\n")
+myfile_out.write("*Inspired by \"A Living Review of Machine Learning for Particle Physics\", the goal of this repository is to provide an extensive list of citations for those developing and applying quantum information approaches to experimental, phenomenological, or theoretical analyses.  This repository will be updated as often as possible.  Suggestions are most welcome.*\n\n")
 
-myfile_out.write("[![download](https://img.shields.io/badge/download-review-blue.svg)](https://iml-wg.github.io/HEPML-LivingReview/review/hepml-review.pdf)\n\n")
+# myfile_out.write("[![download](https://img.shields.io/badge/download-review-blue.svg)](https://iml-wg.github.io/HEPML-LivingReview/review/hepml-review.pdf)\n\n")
 
-myfile_out.write("The purpose of this note is to collect references for modern machine learning as applied to particle physics.  A minimal number of categories is chosen in order to be as useful as possible.  Note that papers may be referenced in more than one category.  The fact that a paper is listed in this document does not endorse or validate its content - that is for the community (and for peer-review) to decide.  Furthermore, the classification here is a best attempt and may have flaws - please let us know if (a) we have missed a paper you think should be included, (b) a paper has been misclassified, or (c) a citation for a paper is not correct or if the journal information is now available.  In order to be as useful as possible, this document will continue to evolve so please check back before you write your next paper.  If you find this review helpful, please consider citing it using \\cite{hepmllivingreview} in HEPML.bib.\n\n")
+myfile_out.write("The goal of this repository is to collect references for quantum information science as applied to particle and nuclear physics.  \n\n")
 
 ###This bit is slightly modified from Kyle Cranmer https://github.com/cranmer/inspire_play
 def summarize_record(recid):
@@ -55,7 +55,7 @@ def convert_from_bib(myline):
 
     myline = myline.replace(" ","").replace("\n","")
 
-    myfile_bib = open("HEPML.bib")
+    myfile_bib = open("HEPQIS.bib")
     mylines = []
     for line in myfile_bib:
         mylines+=[line]
@@ -103,8 +103,8 @@ def convert_from_bib(myline):
 
             #print(inspire_dict)
 
-            myfile_bib_copy = open("HEPML_copy.bib","w")
-            myfile_bib = open("HEPML.bib")
+            myfile_bib_copy = open("HEPQIS_copy.bib","w")
+            myfile_bib = open("HEPQIS.bib")
             for line in myfile_bib:
                 myfile_bib_copy.write(line)
                 if myentry_dict['eprint'] in line and "eprint" in line:
@@ -119,7 +119,7 @@ def convert_from_bib(myline):
                         pass
                     pass
                 pass
-            os.system("mv HEPML_copy.bib HEPML.bib")
+            os.system("mv HEPQIS_copy.bib HEPQIS.bib")
             #exit(1)
 
     if "title" not in myentry_dict:
