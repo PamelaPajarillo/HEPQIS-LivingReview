@@ -24,20 +24,15 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip setuptools wheel pandas bibtexparser datetime urllib3
+        python -m pip install --upgrade pip setuptools wheel pandas urllib3
         python -m pip list
 
     - name: Test README generation
       run: |
-        cp README.md README.bak
         cp BY_HEP/README.md BY_HEP/README.bak
         cp BY_QIS/README.md BY_QIS/README.bak
+        cp HEPQIS.bib HEPQIS.bak
         python make_hepqis.py
-        if [[ "$(diff README.md README.bak)" ]]; then
-           echo "ERROR: Main README is out of sync"
-           echo "       run make_hepqis.py and commit changes"
-           exit 1
-        fi
         if [[ "$(diff BY_HEP/README.md BY_HEP/README.bak)" ]]; then
            echo "ERROR: HEP README is out of sync"
            echo "       run make_hepqis.py and commit changes"
@@ -45,6 +40,11 @@ jobs:
         fi
         if [[ "$(diff BY_QIS/README.md BY_QIS/README.bak)" ]]; then
            echo "ERROR: QIS README is out of sync"
+           echo "       run make_hepqis.py and commit changes"
+           exit 1
+        fi
+        if [[ "$(diff HEPQIS.bib HEPQIS.bak)" ]]; then
+           echo "ERROR: BIBTEX is out of sync"
            echo "       run make_hepqis.py and commit changes"
            exit 1
         fi

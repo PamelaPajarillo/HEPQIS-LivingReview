@@ -8,8 +8,8 @@
 The goal of this repository is to collect references for quantum information science as applied to particle and nuclear physics. The papers are listed in reverse chronological order. 
 
 The repository is organized in two ways: 
-* [![MAIN_TO_HEP](https://img.shields.io/badge/Link_to-Living_Review_by_HEP-5BC0EB)](/BY_HEP#readme) 
-* [![MAIN_TO_HEP](https://img.shields.io/badge/Link_to-Living_Review_by_QIS-9BC53D)](/BY_QIS#readme)
+* [![MAIN_TO_HEP](https://img.shields.io/badge/Link_to-Living_Review_by_HEP-5BC0EB)](/BY_HEP#a-living-review-of-quantum-information-science-in-high-energy-physics-organized-by-hep-topics) 
+* [![MAIN_TO_HEP](https://img.shields.io/badge/Link_to-Living_Review_by_QIS-9BC53D)](/BY_QIS#a-living-review-of-quantum-information-science-in-high-energy-physics-organized-by-qis-topics)
 
 These are then organized by subtopics listed below. 
 

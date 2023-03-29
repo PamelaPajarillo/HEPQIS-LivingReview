@@ -22,9 +22,8 @@ All paper additions should be submitted as a single pull request on a source bra
 
 1. Make a new branch on your fork for the pull request
 2. Find the paper on [INSPIRE](https://inspirehep.net/?ln=en). If you found the paper on [arXiv](https://arxiv.org/), the INSPIRE listing linked is linked under "References & Citations"
-3. Get the BibTeX for the paper citation provided by INSPIRE (under "Export" at the bottom of the page)
-4. Add this BibTeX entry to [`HEPML.bib`](https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS.bib) in the appropriate chronological position
-5. Add the citation, HEP and QIS category identifications, and descriptions to [`HEPML.csv`](https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS.csv) in the appropriate categories
-6. Run `make` to update the `README` and `PDF` files with the new references
-7. Add and commit `HEPQIS.bib`, `HEPQIS.csv`, and the updated `README` and `PDF` files to your pull request
+3. Obtain the INSPIRE control number by copying the digits at the end of the URL: `https://inspirehep.net/literature/CONTROLNUMBER`
+4. Add the INSPIRE control number, HEP and QIS category identifications, and descriptions to [`HEPML.csv`](https://github.com/PamelaPajarillo/HEPQIS-LivingReview/blob/main/HEPQIS.csv) in the appropriate categories
+5. Run `make` to update the `README`,`PDF`, and `BIB` files with the new references
+6. Add and commit `HEPQIS.bib`, `HEPQIS.csv`, and the updated `README`,`PDF`, and `BIB` files to your pull request
 8. If you haven't yet, push your branch to GitHub and open a pull request to the main project
