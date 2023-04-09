@@ -4,35 +4,60 @@ import pandas as pd
 from datetime import date
 import urllib3
 import json
+import yaml
 
-def format_date(date_arxiv, date_doi, journal_name):
+def format_pub_info(run, date_arxiv, date_doi, eprint, eprint_url, doi, doi_url):
     date_vec_arxiv = date_arxiv.split("-")
     date_vec_doi = date_doi.split("-")
-    if date_arxiv != 'nan' and date_doi != 'nan':
-        # Paper is on arXiv and is in a journal
-        if len(date_vec_arxiv) == 3:
-            return "\item \\textbf{Posted on arXiv:} " + date(int(date_vec_arxiv[0]), int(date_vec_arxiv[1]), int(date_vec_arxiv[2])).strftime("%d %B %Y") + " \n\t\item \\textbf{Published in:} %s" % (journal_name)
-        elif len(date_vec_arxiv) == 2:
-            return "\item \\textbf{Posted on arXiv:} " + date(int(date_vec_arxiv[0]), int(date_vec_arxiv[1]), 1).strftime("%B %Y") + " \n\t\item \\textbf{Published in: } %s" % (journal_name)
-    elif date_arxiv != 'nan':
-        # Paper is only on arXiv
-        if len(date_vec_arxiv) == 3:
-            return "\item \\textbf{Posted on arXiv:} " + date(int(date_vec_arxiv[0]), int(date_vec_arxiv[1]), int(date_vec_arxiv[2])).strftime("%d %B %Y") 
-        else:
-            return "\item \\textbf{Posted on arXiv:} " + date(int(date_vec_arxiv[0]), int(date_vec_arxiv[1]), 1).strftime("%B %Y") 
-    elif date_doi != 'nan':
-        # Paper is only in a journal
-        if len(date_vec_doi) == 3:
-            return "\item \\textbf{Published in:} %s: " % (journal_name)  + date(int(date_vec_doi[0]), int(date_vec_doi[1]), int(date_vec_doi[2])).strftime("%d %B %Y")
-        else:
-            return "\item \\textbf{Published in:} %s: " % (journal_name) + date(int(date_vec_doi[0]), int(date_vec_doi[1]), 1).strftime("%B %Y")
-    else:
-        return 'nan'
 
-def get_dataframe(csv_file, categories_hep, categories_qis):
-    # Read CSV and convert to dataframe
-    csv_entries = pd.read_csv(csv_file, dtype=str)
-    df = pd.DataFrame(csv_entries)
+    str_arxiv = ''
+    str_doi = ''
+
+    if date_arxiv != 'nan':
+        # Prefix 
+        if run == 'md':
+            str_arxiv = "\n+ <strong>Posted on <a href=\"%s\">arXiv:%s</a>:</strong> " % (eprint_url, eprint)
+        elif run == 'tex':
+            str_arxiv = "\item \\textbf{Posted on arXiv:} "
+        # Append Date
+        if len(date_vec_arxiv) == 3:
+            str_arxiv += date(int(date_vec_arxiv[0]), int(date_vec_arxiv[1]), int(date_vec_arxiv[2])).strftime("%d %B %Y")
+        elif len(date_vec_arxiv) == 2:
+            str_arxiv += date(int(date_vec_arxiv[0]), int(date_vec_arxiv[1]), 1).strftime("%B %Y")
+        else:
+            str_arxiv += date(int(date_vec_arxiv[0]), 1, 1).strftime("%Y")
+    
+    if date_doi != 'nan':
+        # Prefix
+        if run == 'md':
+            str_doi = "\n+ <strong>Published in <a href=\"%s\">%s</a>:</strong> " % (doi_url, doi)
+        elif run == 'tex':
+            str_doi = "\item \\textbf{Published in %s:} " % (doi)
+        # Append Date
+        if len(date_vec_doi) == 3:
+            str_doi += date(int(date_vec_doi[0]), int(date_vec_doi[1]), int(date_vec_doi[2])).strftime("%d %B %Y")
+        elif len(date_vec_doi) == 2:
+            str_doi += date(int(date_vec_doi[0]), int(date_vec_doi[1]), 1).strftime("%B %Y")
+        else:
+            str_doi += date(int(date_vec_doi[0]), 1, 1).strftime("%Y")
+            
+    if str_arxiv != '' and str_doi != '':
+        return str_arxiv + ' ' +  str_doi
+    elif str_arxiv != '' and str_doi == '':
+        return str_arxiv
+    elif str_arxiv == '' and str_doi != '':
+        return str_doi
+    else:
+        return ''
+
+def get_dataframe(yaml_file, categories_hep, categories_qis):
+    
+    # Load the YAML file
+    with open(yaml_file, 'r') as file:
+        data = yaml.load(file, Loader=yaml.FullLoader)
+
+    # Convert the YAML data to a Pandas DataFrame
+    df = pd.DataFrame.from_dict(data)
 
     # Check to make sure each paper's categories are valid
     def check_categories(categories, category_list):
@@ -150,32 +175,39 @@ def get_dataframe(csv_file, categories_hep, categories_qis):
     df["eprint_url"] = df["eprint"].apply(lambda x: "https://arxiv.org/abs/" + x if x != 'nan' else 'nan')
     df["doi_url"] = df["doi"].apply(lambda x: "https://doi.org/" + x if x != 'nan' else 'nan')
     df["arxiv_date"] = df["metadata"].apply(lambda x: x['metadata']['preprint_date'] if 'preprint_date' in x['metadata'].keys() else 'nan')
-    df["doi_date"] = df["metadata"].apply(lambda x: x['metadata']['imprints'][0]['date'] if 'imprints' in x['metadata'].keys() else 'nan')
+    df["doi_date"] = df["metadata"].apply(lambda x: x['metadata']['imprints'][0]['date'] if 'imprints' in x['metadata'].keys() else (x['metadata']['publication_info'][0]['year'] if 'publication_info' in x['metadata'].keys() and 'journal_title' in x['metadata']['publication_info'][0] else 'nan'))
     df["metadata_doi"] = df.apply(lambda x: get_doi_metadata(x['doi'], http), axis=1)
     df["journal_name"] = df.apply(lambda x: get_journal_doi(x['doi'], x['metadata_doi']), axis=1)
-    df["Publish_Info"] = df["Publish_Info"] = df.apply(lambda x: format_date(str(x['arxiv_date']), str(x['doi_date']), str(x['journal_name'])), axis=1)
+    df["Publish_Info_md"] = df.apply(lambda x: format_pub_info('md', str(x['arxiv_date']), str(x['doi_date']), str(x['eprint']), str(x['eprint_url']), str(x['journal_name']), str(x['doi_url'])), axis=1)
+    df["Publish_Info_latex"] = df.apply(lambda x: format_pub_info('tex', str(x['arxiv_date']), str(x['doi_date']), str(x['eprint']), str(x['eprint_url']), str(x['journal_name']), str(x['doi_url'])), axis=1)
     df["bibtex_tag"] = df["metadata"].apply(lambda x: x['metadata']['texkeys'][0])
     df["bibtex"] = df["metadata"].apply(lambda x: get_bibtex(x, http))
+    
     # Compress dataframe with useful information
-    df = df[["ID", "title", "authors", "authors_url", "eprint", "doi", "eprint_url", "doi_url", "inspirehep_url", "Publish_Info",
-             "HEP_Primary", "HEP_Secondary", "QIS_Primary", "QIS_Secondary", "HEP_Context", "Methods", "Results_and_Conclusions", "bibtex_tag", "bibtex"]]
+    df = df[["ID", "title", "authors", "authors_url", "eprint", "doi", "eprint_url", "doi_url", "inspirehep_url", "Publish_Info_md", "Publish_Info_latex",
+             "HEP_Primary", "HEP_Secondary", "QIS_Primary", "QIS_Secondary", "HEP_Context", "QIS_Methods", "Results_and_Conclusions", "bibtex_tag", "bibtex"]]
     return df
 
-def get_categories(csv_file):
-    categories = []
-    # Read CSV and convert to dataframe
-    csv_entries = pd.read_csv(csv_file)
-    df_csv = pd.DataFrame(csv_entries)
-    categories = df_csv['Category'].tolist()
+def get_categories(yaml_file):
+    # Read YAML file
+    df_categories = {}
+    list_categories = {}
+    with open(yaml_file, 'r') as file:
+        data = yaml.load_all(file, Loader=yaml.FullLoader)
+
+        # Convert the YAML data to a Pandas DataFrame
+        for idx, d in enumerate(data):
+            df_categories[idx] = pd.DataFrame.from_dict(d)
+            list_categories[idx] = df_categories[idx]['Category'].tolist()
     
-    return categories, df_csv
+    return df_categories[0], list_categories[0], df_categories[1], list_categories[1]
 
 def list_subcategories_to_md(OUTPUT_FILE_MAIN, OUTPUT_FILE_RUN, subcategories, df_csv, run_type):
     for category in subcategories:
         if (category != 'Reviews') and (category != 'Whitepapers'):
             OUTPUT_FILE_MAIN.write("* [![Papers-%s](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_%s/README.md#%s-) [![Descriptions-%s](https://img.shields.io/badge/Link_to-Description-0066CC)](/BY_%s/CATEGORIES.md#%s-) **%s**  \n" % (category.replace(" ", "-").lower(), run_type, category.replace(" ", "-").lower(), category.replace(" ", "-").lower(), run_type, category.replace(" ", "-").lower(), category))
             OUTPUT_FILE_RUN.write("## **%s** [![Papers-%s](https://img.shields.io/badge/Link_to-Papers-AA96DA)](/BY_%s/README.md#%s-)\n" % (category, category.replace(" ", "-").lower(), run_type, category.replace(" ", "-").lower()))
-            if str(df_csv.loc[df_csv['Category'] == category]['Description'].values[0]) != 'nan':
+            if str(df_csv.loc[df_csv['Category'] == category]['Description'].values[0]) != '':
                 OUTPUT_FILE_RUN.write("%s\n\n" % df_csv.loc[df_csv['Category'] == category]['Description'].values[0])
     OUTPUT_FILE_MAIN.write("\n\n")
     OUTPUT_FILE_RUN.write("\n\n")
@@ -183,7 +215,7 @@ def list_subcategories_to_md(OUTPUT_FILE_MAIN, OUTPUT_FILE_RUN, subcategories, d
 def write_papers_to_md(df, output_file, categories_main, categories_sub, main_type, sub_type):
 
     # Indices of table to check for LaTeX formatting and change to Markdown
-    text_check = [9, 14, 15, 16]
+    text_check = [15, 16, 17]
 
     # Get Categories
     for main_category in categories_main:
@@ -216,25 +248,23 @@ def write_papers_to_md(df, output_file, categories_main, categories_sub, main_ty
                     output_file.write("<details>\n")
 
                     if (str(paper[4]) != 'nan') and (str(paper[5]) != 'nan'):
-                        output_file.write("<summary> <b>%s</b> [<a href=\"%s\">arXiv:%s</a>] [<a href=\"%s\">DOI</a>] [<a href=\"%s\">INSPIRE</a>] <code>Expand</code> </summary>" % (paper[1], paper[6], paper[4], paper[7], paper[8]))
+                        output_file.write("<summary> <b>%s</b> [<a href=\"%s\">arXiv</a>] [<a href=\"%s\">DOI</a>] [<a href=\"%s\">INSPIRE</a>] <code>Expand</code> </summary>" % (paper[1], paper[6], paper[7], paper[8]))
                     elif str(paper[4]) != 'nan':
-                        output_file.write("<summary> <b>%s</b> [<a href=\"%s\">arXiv:%s</a>] [<a href=\"%s\">INSPIRE</a>] <code>Expand</code><br> </summary>" % (paper[1], paper[6], paper[4], paper[8]))
+                        output_file.write("<summary> <b>%s</b> [<a href=\"%s\">arXiv</a>] [<a href=\"%s\">INSPIRE</a>] <code>Expand</code><br> </summary>" % (paper[1], paper[6], paper[8]))
                     elif str(paper[5])!= 'nan':
                         output_file.write("<summary> <b>%s</b> [<a href=\"%s\">DOI</a>] [<a href=\"%s\">INSPIRE</a>] <code>Expand</code><br> </summary>" % (paper[1], paper[7], paper[8]))
 
                     # Reformat LaTeX to Markdown
                     for i in text_check:
-                        if str(paper[i]) != 'nan':
+                        if paper[i] is not None:
                             paper[i] = re.sub(r"(\\textbf{)(.*?)\}", r"<strong>\2</strong>", paper[i])
                             paper[i] = re.sub(r"(\\textit{)(.*?)\}", r"<em>\2</em>", paper[i])
                             paper[i] = re.sub(r"(\\underline{)(.*?)\}", r"<u>\2</u>", paper[i])
-                            paper[i] = re.sub(r"\\item", r"\n+", paper[i])
-                            paper[i] = re.sub(r"\n\t", r"", paper[i])
                     
                     # Write brief description and summary of paper
                     output_file.write("\n\n+ <strong>Authors:</strong> %s%s" % (paper[3], paper[9]))
-                    if (str(paper[14]) != 'nan' and str(paper[15]) != 'nan' and str(paper[16]) != 'nan'):
-                        output_file.write("\n+ <strong>HEP Context:</strong> %s\n+ <strong>QIS Methods:</strong> %s\n+ <strong>Results and Conclusions:</strong> %s" % (paper[14].strip('\"'), paper[15].strip('\"'), paper[16].strip('\"')))
+                    if (str(paper[15]) != '' and str(paper[16]) != '' and str(paper[17]) != ''):
+                        output_file.write("\n+ <strong>HEP Context:</strong> %s\n+ <strong>QIS Methods:</strong> %s\n+ <strong>Results and Conclusions:</strong> %s" % (paper[15].strip('\"'), paper[16].strip('\"'), paper[17].strip('\"')))
                     output_file.write("</details>\n\n")
                 
                 output_file.write("\n\n")
@@ -248,7 +278,7 @@ def write_categories_to_tex(OUTPUT_FILE_MAIN, subcategories, df_csv, run_type):
     for category in subcategories:
         if (category != 'Reviews') and (category != 'Whitepapers'):
             OUTPUT_FILE_MAIN.write("\subsubsection{%s}  \n" % (category))
-            if str(df_csv.loc[df_csv['Category'] == category]['Description'].values[0]) != 'nan':
+            if str(df_csv.loc[df_csv['Category'] == category]['Description'].values[0]) != '':
                 OUTPUT_FILE_MAIN.write("%s\n\n" % df_csv.loc[df_csv['Category'] == category]['Description'].values[0])
 
     OUTPUT_FILE_MAIN.write("\n\n")
@@ -296,14 +326,14 @@ def write_papers_to_tex(df, file, categories_main, categories_sub, main_type, su
                     paper[2] = re.sub(r"ú", r"\'{u}", paper[2])
                     paper[2] = re.sub(r"ź", r"\'{z}", paper[2])
 
-                    file.write("\paragraph{%s~\cite{%s}}\n" % (paper[1], paper[17]))
+                    file.write("\paragraph{%s~\cite{%s}}\n" % (paper[1], paper[18]))
                     file.write("\\begin{itemize}\n")
-                    file.write("\t\item \\textbf{Authors:} %s\n\t%s\n" % (paper[2], paper[9]))
-                    if (str(paper[14]) != 'nan' and str(paper[15]) != 'nan' and str(paper[16]) != 'nan'):
-                        file.write("\t\item \\textbf{HEP Context:} %s\n\t\item \\textbf{QIS Methods:} %s\n\t\item \\textbf{Results and Conclusions:} %s\n" % (paper[14], paper[15], paper[16]))
+                    file.write("\t\item \\textbf{Authors:} %s\n\t%s\n" % (paper[2], paper[10]))
+                    if (str(paper[15]) != '' and str(paper[16]) != '' and str(paper[17]) != ''):
+                        file.write("\t\item \\textbf{HEP Context:} %s\n\t\item \\textbf{QIS Methods:} %s\n\t\item \\textbf{Results and Conclusions:} %s\n" % (paper[15], paper[16], paper[17]))
                     file.write("\end{itemize}\n\n")
                 file.write("\n\n")
 
 def write_bib(df, OUTPUT_FILE_BIB):
     for paper in df.values.tolist():
-        OUTPUT_FILE_BIB.write("%s\n" % paper[18])
+        OUTPUT_FILE_BIB.write("%s\n" % paper[19])

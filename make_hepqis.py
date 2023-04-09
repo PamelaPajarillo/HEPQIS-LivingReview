@@ -1,16 +1,14 @@
 from utils import *
 
 # Input Files
-CSV_FILE = 'HEPQIS.csv'
-CATEGORIES_CSV_HEP = 'BY_HEP/CATEGORIES.csv'
-CATEGORIES_CSV_QIS = 'BY_QIS/CATEGORIES.csv'
+YAML_FILE = 'HEPQIS.yaml'
+CATEGORIES_YAML = 'HEPQIS_CATEGORIES.yaml'
 
 # Get categories from CSV file
-categories_hep, df_csv_hep = get_categories(CATEGORIES_CSV_HEP)
-categories_qis, df_csv_qis = get_categories(CATEGORIES_CSV_QIS)
+df_csv_hep, categories_hep, df_csv_qis, categories_qis = get_categories(CATEGORIES_YAML)
 
 # Get dataframe of BibTeX and CSV
-df = get_dataframe(CSV_FILE, categories_hep, categories_qis)
+df = get_dataframe(YAML_FILE, categories_hep, categories_qis)
 
 # ***** ---------------------------------------------------------------------------------------
 # ***** MARKDOWN FILES ------------------------------------------------------------------------
