@@ -75,10 +75,24 @@
 - Category: Event Generation
   Description: >-
     Event generators are programs that generate simulated events produced in
-    collider experiments. In hadronic collisions, an event is composed of the
-    following: \begin{enumerate} \item Incoming hadrons \item Hard part of the
-    process \item Radiation \item Underlying event \item Hadronization
-    \end{enumerate}
+    collider experiments. An event is the outcome of a collision between two
+    incoming particles, or the outcome of an isolated decay of a particle, which
+    consists of a number of outgoing particles. In high-energy hadronic
+    collisions, the main components an event is composed of the following:
+    \begin{enumerate} \item Incoming hadrons: The initial partons involved in a
+    hard scattering process are selected using parton distribution functions for
+    the incoming hadrons. \item Hard scattering: The kinematics of the outgoing 
+    partons are based on matrix elements calculated in perturbation theory.
+    \item Radiation: The incoming and outgoing partons radiate quarks and
+    gluons. This radiation pattern can be approximated semi-classically using a
+    parton shower algorithm. Parton showers link the perturbative and
+    non-perturbative energy regimes. \item Underlying event: Scattering also
+    occurs with other partons not associated with the hard scattering process
+    coming from the incoming hadrons. These partons tend to be soft, i.e. lower
+    energy than the partons from the hard scattering process. \item
+    Hadronization: This refers the the formations of hadrons out of quarks and
+    gluons. \end{enumerate} Common event generators include Pythia, Herwig, and
+    Sherpa.
 - Category: Jet Algorithms and Jet Tagging
   Description: ''
 - Category: Lattice Field Theories
@@ -112,9 +126,9 @@
   Description: >-
     Continuous variable quantum computing is a quantum computing paradigm that
     uses a large number of modes of the harmonic oscillator, which can be
-    represented as $\ket{\psi} = \int \,dx\, \psi(x) \ket{x} $, whereas discrete
-    variable quantum computing uses discrete number of quantum bits, for
-    example, a qubit can be represented as $\ket{\psi} = c_0 \ket{0} + c_1
+    represented as $\ket{\psi} = \int \,\mathrm{d}x\, \psi(x) \ket{x} $, whereas
+    discrete variable quantum computing uses discrete number of quantum  bits,
+    for example, a qubit can be represented as $\ket{\psi} = c_0 \ket{0} + c_1
     \ket{1}$.
 - Category: Quantum Algorithms Based on Amplitude Amplification
   Description: >-
@@ -207,28 +221,30 @@
     will give the solution to the QUBO problem, since the final system is in an
     eigenstate of $H_f$.
 - Category: Quantum Autoencoders
-  Description: ''
+  Description: ""
 - Category: Quantum Circuit Born Machines
-  Description: ''
+  Description: ""
+- Category: Quantum Kernel Methods
+  Description: "Quantum Support Vector Machines"
 - Category: Quantum Neural Networks
-  Description: ''
+  Description: ""
 - Category: Quantum Generative Adversarial Networks
   Description: >-
     The implementation of a classical model involves two main components: (1)
     generator model, which produces artificial data; (2) discriminator model,
     which tries to classify the data as either real or generated.
 - Category: Quantum Inspired Algorithms
-  Description: ''
+  Description: ""
 - Category: Quantum Information Theory
-  Description: 'Entanglement, Bell Inequality'
-- Category: Quantum Support Vector Machines
-  Description: ''
+  Description: "Entanglement, Bell Inequality"
 - Category: Quantum Sensors
-  Description: ''
+  Description: ""
 - Category: Quantum Simulations
-  Description: ''
+  Description: ""
+- Category: Quantum Storage
+  Description: ""
 - Category: Quantum Unsupervised Clustering Algorithms
-  Description: ''
+  Description: ""
 - Category: Quantum Walks
   Description: >-
     A random walk is a random process that describes a path that consists of a
@@ -259,6 +275,6 @@
     step. This introduces interference, which is drastically different from the
     classical random walk.
 - Category: Tensor Networks
-  Description: ''
+  Description: ""
 - Category: Variational Quantum Circuits
-  Description: 'Variational quantum circuits, also known as parametrized quantum circuits, '
+  Description: "Variational quantum circuits, also known as parametrized quantum circuits, "

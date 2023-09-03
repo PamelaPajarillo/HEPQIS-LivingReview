@@ -263,8 +263,12 @@ def write_papers_to_md(df, output_file, categories_main, categories_sub, main_ty
                     
                     # Write brief description and summary of paper
                     output_file.write("\n\n+ <strong>Authors:</strong> %s%s" % (paper[3], paper[9]))
-                    if (str(paper[15]) != '' and str(paper[16]) != '' and str(paper[17]) != ''):
-                        output_file.write("\n+ <strong>HEP Context:</strong> %s\n+ <strong>QIS Methods:</strong> %s\n+ <strong>Results and Conclusions:</strong> %s" % (paper[15].strip('\"'), paper[16].strip('\"'), paper[17].strip('\"')))
+                    if (str(paper[15]) != ''):
+                        output_file.write("\n+ <strong>HEP Context:</strong> %s" % (paper[15].strip('\"')))
+                    if (str(paper[16]) != ''):
+                        output_file.write("\n+ <strong>QIS Methods:</strong> %s" % (paper[16].strip('\"')))
+                    if (str(paper[17]) != ''):
+                        output_file.write("\n+ <strong>Results and Conclusions:</strong> %s" % (paper[17].strip('\"')))
                     output_file.write("</details>\n\n")
                 
                 output_file.write("\n\n")
@@ -329,8 +333,15 @@ def write_papers_to_tex(df, file, categories_main, categories_sub, main_type, su
                     file.write("\paragraph{%s~\cite{%s}}\n" % (paper[1], paper[18]))
                     file.write("\\begin{itemize}\n")
                     file.write("\t\item \\textbf{Authors:} %s\n\t%s\n" % (paper[2], paper[10]))
-                    if (str(paper[15]) != '' and str(paper[16]) != '' and str(paper[17]) != ''):
-                        file.write("\t\item \\textbf{HEP Context:} %s\n\t\item \\textbf{QIS Methods:} %s\n\t\item \\textbf{Results and Conclusions:} %s\n" % (paper[15], paper[16], paper[17]))
+                    if (str(paper[15]) != ''):
+                        file.write("\t\item \\textbf{HEP Context:} %s\n" % (paper[15]))
+                    
+                    if (str(paper[16]) != ''):
+                        file.write("\t\item \\textbf{QIS Methods:} %s\n\t" % (paper[16]))
+
+                    if (str(paper[17]) != ''):
+                        file.write("\t\item \\textbf{Results and Conclusions:} %s\n" % (paper[17]))
+                    
                     file.write("\end{itemize}\n\n")
                 file.write("\n\n")
 
